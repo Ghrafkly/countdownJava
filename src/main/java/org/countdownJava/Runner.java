@@ -20,7 +20,6 @@ public class Runner {
 
 	public void permutations() {
 		permutations = new Permutations();
-		permutationsSet = permutations.generate(numbers);
 
 		for (List<String> combination : combinationsSet) {
 			permutationsSet = permutations.generate(combination);
@@ -33,15 +32,18 @@ public class Runner {
 	public void postfix() {
 		for (Map.Entry<List<String>, List<List<String>>> entry : combinationsPermutationsMap.entrySet()) {
 			for (List<String> permutation : entry.getValue()) {
+				System.out.println("Hello");
 				Postfix postfix = new Postfix(permutation);
 				postfixSet = postfix.generate(new ArrayList<>(), -1);
 				permutationsPostfixMap.put(permutation, postfixSet);
 
 				numberOfPostfix += postfixSet.size();
+
+				System.out.println(numberOfPostfix);
 			}
 
 			// Evaluate the postfix expressions, then clear them to save memory
-			evaluate(permutationsPostfixMap);
+//			evaluate(permutationsPostfixMap);
 			permutationsPostfixMap.clear();
 		}
 	}
@@ -51,6 +53,30 @@ public class Runner {
 			Evaluate evaluate = new Evaluate(entry.getValue());
 			evaluate.evaluate();
 		}
+	}
+
+	public void start() {
+		combinations();
+		permutations();
+//		postfix(); // This also evaluates the postfix expressions
+		printCounts();
+//		printMaps();
+		printSolutions();
+	}
+
+	public static void main(String[] args) {
+		Runner runner = new Runner();
+
+//		numbers =  new ArrayList<>(Arrays.asList("1", "2", "3"));
+//		numbers = new ArrayList<>(Arrays.asList("1", "2", "3", "4", "4"));
+        numbers = new ArrayList<>(Arrays.asList("1", "1", "2", "2", "3", "3", "4", "4", "5", "5", "6", "6", "7", "7", "8", "8", "9", "9", "10", "10", "25", "50", "75", "100"));
+
+		R = 6;
+
+		runner.start();
+
+		System.out.println("Valid Equations: " + Evaluate.validEquations);
+		System.out.println("Invalid Equations: " + Evaluate.invalidEquations);
 	}
 
 	public void printCounts() {
@@ -79,31 +105,6 @@ public class Runner {
 		for (Map.Entry<Integer, Integer> entry : Evaluate.solutions.entrySet()) {
 			System.out.printf("%4d = %4d%n", entry.getKey(), entry.getValue());
 		}
-	}
-
-	public void start() {
-		combinations();
-		permutations();
-		postfix(); // This also evaluates the postfix expressions
-		printCounts();
-//		printMaps();
-		printSolutions();
-	}
-
-	public static void main(String[] args) {
-		Runner runner = new Runner();
-
-//		numbers =  new ArrayList<>(Arrays.asList("1", "2", "3"));
-//		numbers = new ArrayList<>(Arrays.asList("1", "2", "3", "4", "4"));
-        numbers = new ArrayList<>(Arrays.asList("1", "1", "2", "2", "3", "3", "4", "4", "5", "5", "6", "6", "7", "7", "8", "8", "9", "9", "10", "10", "25", "50", "75", "100"));
-
-		R = 3;
-
-		runner.start();
-
-		System.out.println("Valid Equations: " + Evaluate.validEquations);
-		System.out.println("Invalid Equations: " + Evaluate.invalidEquations);
-
 	}
 }
 
