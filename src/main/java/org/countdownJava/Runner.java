@@ -1,25 +1,32 @@
 package org.countdownJava;
 
+import org.countdownJava.Database.DatabaseConnection;
+import org.countdownJava.Database.ModifyDB;
+import org.countdownJava.Math.Combinations;
+import org.countdownJava.Math.Evaluate;
+import org.countdownJava.Math.Permutations;
+import org.countdownJava.Math.Postfix;
+
+import java.sql.Connection;
 import java.util.*;
 
 public class Runner {
 	public static int R;
 	public static ArrayList<String> numbers;
-	private Combinations combinations;
-	private Permutations permutations;
 	private List<List<String>> combinationsSet, permutationsSet, postfixSet;
-	private Map<List<String>, List<List<String>>> combinationsPermutationsMap = new HashMap<>(), permutationsPostfixMap = new HashMap<>();
+	private final Map<List<String>, List<List<String>>> combinationsPermutationsMap = new HashMap<>(), permutationsPostfixMap = new HashMap<>();
 	private int numberOfCombinations, numberOfPermutations, numberOfPostfix;
 
-	public void combinations() {
-		combinations = new Combinations(numbers);
-		combinationsSet = combinations.generate(numbers.size(), R);
+	private final ModifyDB modifyDB = new ModifyDB();
 
+	public void combinations() {
+		Combinations combinations = new Combinations();
+		combinationsSet = combinations.generate(numbers, numbers.size(), R);
 		numberOfCombinations = combinationsSet.size();
 	}
 
 	public void permutations() {
-		permutations = new Permutations();
+		Permutations permutations = new Permutations();
 
 		for (List<String> combination : combinationsSet) {
 			permutationsSet = permutations.generate(combination);
@@ -27,24 +34,30 @@ public class Runner {
 
 			numberOfPermutations += permutationsSet.size();
 		}
+
+		modifyDB.addCP(combinationsPermutationsMap);
 	}
 
 	public void postfix() {
 		for (Map.Entry<List<String>, List<List<String>>> entry : combinationsPermutationsMap.entrySet()) {
 			for (List<String> permutation : entry.getValue()) {
-				System.out.println("Hello");
 				Postfix postfix = new Postfix(permutation);
 				postfixSet = postfix.generate(new ArrayList<>(), -1);
 				permutationsPostfixMap.put(permutation, postfixSet);
 
 				numberOfPostfix += postfixSet.size();
 
-				System.out.println(numberOfPostfix);
+				// Evaluate the postfix expressions, then clear them to save memory
+//				evaluate(permutationsPostfixMap);
+//				permutationsPostfixMap.clear();
+
+//				System.out.println(Evaluate.validEquations);
+//				for (Map.Entry<Integer, Integer> e : Evaluate.solutions.entrySet()) {
+//					System.out.printf("%4d = %4d%n", e.getKey(), e.getValue());
+//				}
 			}
 
-			// Evaluate the postfix expressions, then clear them to save memory
-//			evaluate(permutationsPostfixMap);
-			permutationsPostfixMap.clear();
+
 		}
 	}
 
@@ -59,13 +72,16 @@ public class Runner {
 		combinations();
 		permutations();
 //		postfix(); // This also evaluates the postfix expressions
-		printCounts();
+//		printCounts();
 //		printMaps();
-		printSolutions();
+//		printSolutions();
 	}
 
 	public static void main(String[] args) {
 		Runner runner = new Runner();
+		ModifyDB db = new ModifyDB();
+
+//		if (runner.resetCheck()) db.resetDB();
 
 //		numbers =  new ArrayList<>(Arrays.asList("1", "2", "3"));
 //		numbers = new ArrayList<>(Arrays.asList("1", "2", "3", "4", "4"));
@@ -77,6 +93,14 @@ public class Runner {
 
 		System.out.println("Valid Equations: " + Evaluate.validEquations);
 		System.out.println("Invalid Equations: " + Evaluate.invalidEquations);
+	}
+
+	public boolean resetCheck() {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Reset DB [Y/N]");
+		String response = sc.nextLine();
+
+		return response.equals("y");
 	}
 
 	public void printCounts() {

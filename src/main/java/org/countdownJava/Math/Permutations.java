@@ -1,4 +1,4 @@
-package org.countdownJava;
+package org.countdownJava.Math;
 
 import java.util.*;
 
