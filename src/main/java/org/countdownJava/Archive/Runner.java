@@ -1,4 +1,4 @@
-package org.countdownJava;
+package org.countdownJava.Archive;
 
 import java.io.*;
 import java.util.*;
@@ -49,9 +49,16 @@ public class Runner {
 
 				avgRunTime.add((int) (System.currentTimeMillis() - start)); // Time Tracker
 			}
-		}
 
-		System.out.printf("POSTFIX - Average run time: %.2f ms%n", avgRunTime.stream().mapToDouble(a -> a).average().orElse(0.0)); // Time Tracker
+			// Evaluate Postfix, then clear the map to save memory
+//			evaluate(permutationsPostfixMap);
+			permutationsPostfixMap.clear();
+		}
+	}
+
+	private void removeDuds(Map<List<String>, String[][]> map) {
+		// remove if only contains -
+		// mirror array with bits for true and false
 	}
 
 	private void evaluate(Map<List<String>, String[][]> map) {
@@ -78,24 +85,22 @@ public class Runner {
 
 		start = System.currentTimeMillis();
 		postfix();
-		System.out.printf("Postfix: %d in %s%n", numberOfPostfix, time(start));
+		System.out.printf("Postfix & Evaluation: %d in %s%n", numberOfPostfix, time(start));
 
-		start = System.currentTimeMillis();
-		evaluate(permutationsPostfixMap);
-		System.out.printf("Evaluate: %d in %s%n", numberOfPostfix, time(start));
+//		start = System.currentTimeMillis();
+//		evaluate(permutationsPostfixMap);
+//		System.out.printf("Evaluate: %d in %s%n", numberOfPostfix, time(start));
 
 		printCounts();
 //		printMaps();
-		printSolutions();
-		writeToFile();
+//		printSolutions();
+//		writeToFile();
 	}
 
 	public static void main(String[] args) {
 		Runner runner = new Runner();
 		IntStream.range(101, 1000).forEach(i -> solutions.put(i, 0));
 
-//		numbers =  new ArrayList<>(Arrays.asList("1", "2", "3"));
-//		numbers = new ArrayList<>(Arrays.asList("10", "25", "50", "75", "100", "9", "8", "7", "6", "5"));
 		numbers = new ArrayList<>(Arrays.asList("10", "25", "75", "100", "9", "8"));
 //        numbers = new ArrayList<>(Arrays.asList("1", "1", "2", "2", "3", "3", "4", "4", "5", "5", "6", "6", "7", "7", "8", "8", "9", "9", "10", "10", "25", "50", "75", "100"));
 
@@ -138,7 +143,14 @@ public class Runner {
 				valueCheck += entry.getValue();
 			}
 		}
+
 		System.out.printf("Value Check: %d%n", valueCheck);
+
+//		for (Map.Entry<Integer, Integer> entry : solutions.entrySet()) {
+//			if (entry.getValue() != 0) {
+//				System.out.printf("%d: %d%n", entry.getKey(), entry.getValue());
+//			}
+//		}
 	}
 
 	private String time(long start) {

@@ -1,6 +1,4 @@
-package org.countdownJava;
-
-import java.util.Arrays;
+package org.countdownJava.Archive;
 
 public class Evaluate {
 	private final String[][] postfixArray;
@@ -11,7 +9,8 @@ public class Evaluate {
 	}
 
 	public void evaluate() {
-		int[] resultList = new int[postfixArray.length];
+		int[] resultList = new int[200000];
+		int index = 0;
 
 		for (String[] postfix : postfixArray) {
 			boolean valid = true;
@@ -44,6 +43,16 @@ public class Evaluate {
 						default -> throw new IllegalStateException("Unexpected value: " + token);
 					}
 				}
+
+				if (stackIndex == 1 && valid) {
+					int result = stack[0];
+					if (result >= 101 && result <= 999) {
+						resultList[index++] = result;
+						validSolutions++;
+					} else {
+						invalidSolutions++;
+					}
+				}
 			}
 
 			/*
@@ -60,14 +69,15 @@ public class Evaluate {
 				validEquations++;
 
 				if (result >= 101 && result <= 999) {
-					resultList[validSolutions++] = result;
+					resultList[index++] = result;
+					validSolutions++;
 				} else {
 					invalidSolutions++;
 				}
 			}
 		}
 
-		// Prints the results
+		// Add results to list
 		for (int result : resultList) {
 			if (result != 0) {
 				Runner.solutions.put(result, Runner.solutions.getOrDefault(result, 0) + 1);

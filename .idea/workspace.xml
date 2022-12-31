@@ -5,21 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c2c086af-04f1-484a-9142-17ce175e2af7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/countdownJava/Evaluate.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/countdownJava/Postfix.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/countdownJava/solutions.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/d8cdfbdd-87b0-49f0-b614-e705003ef20b.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/d8cdfbdd-87b0-49f0-b614-e705003ef20b.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/countdownJava/Archive/solutions.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/countdownJava/Current/Combinations.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/countdownJava/Current/Decoder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/countdownJava/Current/Encoder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/countdownJava/Current/Evaluate.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/countdownJava/Current/Permutations.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/countdownJava/Current/Postfix.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/countdownJava/Current/Runner.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/countdownJava/Test/Remove.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/countdownJava/Database/DatabaseConnection.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/countdownJava/Database/ModifyDB.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/countdownJava/Database/STORED_PROCS.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/countdownJava/Math/Combinations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/countdownJava/Combinations.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/countdownJava/Math/Evaluate.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/countdownJava/Math/Permutations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/countdownJava/Permutations.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/countdownJava/Math/Postfix.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/countdownJava/Runner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/countdownJava/Runner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/countdownJava/Combinations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/countdownJava/Archive/Combinations.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/countdownJava/Evaluate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/countdownJava/Archive/Evaluate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/countdownJava/Permutations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/countdownJava/Archive/Permutations.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/countdownJava/Postfix.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/countdownJava/Archive/Postfix.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/countdownJava/Runner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/countdownJava/Archive/Runner.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,6 +59,7 @@
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;extract.method.default.visibility&quot;: &quot;private&quot;,
+    &quot;last.edited.regexp&quot;: &quot;32345dvbcs123&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/GitHub/countdownJava&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -77,36 +78,26 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Kyle\OneDrive\Documents\GitHub\countdownJava\src\main\java\org\countdownJava" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\GitHub\countdownJava\src\main\java\org\countdownJava\Archive" />
+    </key>
   </component>
-  <component name="RunManager" selected="Application.Runner">
-    <configuration name="DatabaseConnection" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.countdownJava.Database.DatabaseConnection" />
-      <module name="countdownJava" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.countdownJava.Database.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ModifyDB" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.countdownJava.Database.ModifyDB" />
-      <module name="countdownJava" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.countdownJava.Database.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="Application.org.countdownJava.Current.Runner">
     <configuration name="RLEInJava" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.countdownJava.Test.RLEInJava" />
+      <module name="countdownJava" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.countdownJava.Test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Remove" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.countdownJava.Test.Remove" />
       <module name="countdownJava" />
       <extension name="coverage">
         <pattern>
@@ -131,12 +122,25 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.countdownJava.Test.Test" />
+    <configuration name="org.countdownJava.Archive.Runner" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.countdownJava.Archive.Runner" />
       <module name="countdownJava" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.countdownJava.Test.*" />
+          <option name="PATTERN" value="org.countdownJava.Archive.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="org.countdownJava.Current.Runner" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.countdownJava.Current.Runner" />
+      <module name="countdownJava" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.countdownJava.Current.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -146,11 +150,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.org.countdownJava.Current.Runner" />
+        <item itemvalue="Application.org.countdownJava.Archive.Runner" />
+        <item itemvalue="Application.Remove" />
         <item itemvalue="Application.Runner" />
         <item itemvalue="Application.RLEInJava" />
-        <item itemvalue="Application.Test" />
-        <item itemvalue="Application.ModifyDB" />
-        <item itemvalue="Application.DatabaseConnection" />
       </list>
     </recent_temporary>
   </component>
@@ -170,7 +174,8 @@
       <workItem from="1672058703733" duration="24000" />
       <workItem from="1672099201344" duration="18842000" />
       <workItem from="1672206703557" duration="6913000" />
-      <workItem from="1672287430923" duration="6265000" />
+      <workItem from="1672287430923" duration="11414000" />
+      <workItem from="1672450796135" duration="14809000" />
     </task>
     <servers />
   </component>
