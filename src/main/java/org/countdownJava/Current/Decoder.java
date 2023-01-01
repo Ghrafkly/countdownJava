@@ -29,6 +29,6 @@ public class Decoder {
 		}
 
 		return decodedPostfix;
-
 	}
 }
+

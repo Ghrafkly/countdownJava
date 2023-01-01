@@ -51,7 +51,7 @@ public class Runner {
 			}
 
 			// Evaluate Postfix, then clear the map to save memory
-//			evaluate(permutationsPostfixMap);
+			evaluate(permutationsPostfixMap);
 			permutationsPostfixMap.clear();
 		}
 	}
@@ -93,7 +93,7 @@ public class Runner {
 
 		printCounts();
 //		printMaps();
-//		printSolutions();
+		printSolutions();
 //		writeToFile();
 	}
 

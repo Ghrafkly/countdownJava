@@ -15,6 +15,7 @@ public class Runner {
 	private final Map<List<String>, List<List<String>>> combinationsPermutationsMap = new HashMap<>();
 	private final Map<List<String>, char[][]> permutationsPostfixMap = new HashMap<>();
 	public static List<Integer> avgRunTime = new ArrayList<>();
+	private Decoder decoder = new Decoder();
 
 	public void combinations() {
 		Combinations combinations = new Combinations();
@@ -55,7 +56,21 @@ public class Runner {
 				avgRunTime.add((int) (System.currentTimeMillis() - start)); // Time Tracker
 			}
 
-//			permutationsPostfixMap.clear();
+			evaluate(permutationsPostfixMap);
+			permutationsPostfixMap.clear();
+		}
+	}
+
+	public void evaluate(Map<List<String>, char[][]> map) {
+		Evaluate evaluate = new Evaluate();
+		int index = 0;
+		for (Map.Entry<List<String>, char[][]> entry : map.entrySet()) {
+			String[][] postfixArray = new String[41664][11];
+			for (char[] postfix : entry.getValue()) {
+				postfixArray[index++] = decoder.decodePostfix(postfix);
+			}
+			evaluate.evaluate(postfixArray);
+			index = 0;
 		}
 	}
 
@@ -84,6 +99,7 @@ public class Runner {
 		System.out.printf("Postfix: %d in %s%n", numberOfPostfix, time(startTime));
 
 		printCounts();
+		printSolutions();
 	}
 	public static void main(String[] args) {
 		Runner runner = new Runner();
@@ -109,8 +125,19 @@ public class Runner {
 		System.out.printf("Number of combinations: %d%n", numberOfCombinations);
 		System.out.printf("Number of permutations: %d%n", numberOfPermutations);
 		System.out.printf("Number of postfix: %d%n", numberOfPostfix);
-		System.out.println();
-		System.out.println(invalid);
+	}
+
+	public void printSolutions() {
+		System.out.printf("Valid Equations: %d%n", Evaluate.validEquations);
+		System.out.printf("Valid Solutions: %d%n", Evaluate.validSolutions);
+		System.out.printf("Invalid Equations: %d%n", Evaluate.invalidEquations);
+		System.out.printf("Invalid Solutions: %d%n", Evaluate.invalidSolutions);
+
+		for (Map.Entry<Integer, Integer> entry : solutions.entrySet()) {
+			if (entry.getValue() != 0) {
+				System.out.printf("%d: %d%n", entry.getKey(), entry.getValue());
+			}
+		}
 	}
 
 	private String time(long start) {

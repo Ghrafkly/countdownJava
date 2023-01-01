@@ -6,7 +6,8 @@ public class Postfix {
 	private final char[] operators, permutations;
 	private final char[][] postfixArray;
 	private int currentIndex = 0, listIndex = 0, postfixIndex = 0;
-	private Decoder decoder = new Decoder();
+	private Remove remove = new Remove();
+
 	public Postfix(char[] operators, char[] permutations) {
 		// 43008 - 1344 = 41664
 		this.postfixArray = new char[41664][11];
@@ -18,24 +19,11 @@ public class Postfix {
 		if (opsNeeded == 0 && listIndex == permutations.length) {
 			char[] copy = Arrays.copyOf(current, current.length);
 
-			int opCheck = 0;
-			for (char token : copy) {
-				if (token == 'p') {
-					opCheck++;
-				}
-				if (token == 'r') {
-					opCheck++;
-				}
-			}
-
-			if (opCheck == 5) {
+			if (remove.removeCheck(copy)) {
+				postfixArray[postfixIndex++] = copy;
+			} else {
 				Runner.invalid++;
 			}
-
-			if (opCheck < 5) {
-				postfixArray[postfixIndex++] = copy;
-			}
-
 		}
 
 		if (opsNeeded > 0) {
