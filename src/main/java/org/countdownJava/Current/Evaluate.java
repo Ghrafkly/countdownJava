@@ -8,13 +8,15 @@ public class Evaluate {
         int index = 0;
 
         for (String[] postfix : postfixArray) {
+            if (postfix[0] == null) break;
+
             boolean valid = true;
             int[] stack = new int[11];
             int stackIndex = 0;
 
             for (String token : postfix) {
                 // Checks if the equation remains valid
-                if (!valid || token == null) break;
+                if (!valid) break;
 
                 // Evaluates the token
                 if (token.matches("[0-9]+")) {

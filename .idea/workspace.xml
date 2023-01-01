@@ -5,14 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c2c086af-04f1-484a-9142-17ce175e2af7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/countdownJava/Current/Remove.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/countdownJava/Current/WriteToFile.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/countdownJava/Current/solutions.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/countdownJava/Archive/Runner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/countdownJava/Archive/Runner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/countdownJava/Current/Decoder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/countdownJava/Current/Decoder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/countdownJava/Current/Evaluate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/countdownJava/Current/Evaluate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/countdownJava/Current/Postfix.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/countdownJava/Current/Postfix.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/countdownJava/Current/Remove.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/countdownJava/Current/Remove.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/countdownJava/Current/Runner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/countdownJava/Current/Runner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/countdownJava/Test/Remove.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/countdownJava/Test/Timing.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,29 +44,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;extract.method.default.visibility&quot;: &quot;private&quot;,
-    &quot;last.edited.regexp&quot;: &quot;32345dvbcs123&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Github/countdownJava&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "extract.method.default.visibility": "private",
+    "last.edited.regexp": "123a1234a2134234sdf123sadf",
+    "last_opened_file_path": "C:/Github/countdownJava",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;postgresql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Kyle\OneDrive\Documents\GitHub\countdownJava\src\main\java\org\countdownJava" />
@@ -171,6 +171,7 @@
       <workItem from="1672450796135" duration="14809000" />
       <workItem from="1672475544174" duration="3387000" />
       <workItem from="1672529088854" duration="4728000" />
+      <workItem from="1672545483860" duration="2346000" />
     </task>
     <servers />
   </component>

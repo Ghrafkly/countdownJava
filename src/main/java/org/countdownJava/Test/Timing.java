@@ -3,7 +3,7 @@ package org.countdownJava.Test;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class Remove {
+public class Timing {
 //	public void StringListStream() {
 //		ArrayList<String> strList = new ArrayList<>(Arrays.asList("100", "10", "25", "9", "8", "-", "75", "-", "-", "-", "-"));
 //
@@ -127,7 +127,7 @@ public class Remove {
 	}
 
 	public static void main(String[] args) {
-		Remove remove = new Remove();
+		Timing remove = new Timing();
 		long startTime;
 		long endTime;
 		// one billion

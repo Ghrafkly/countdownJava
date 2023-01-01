@@ -107,12 +107,16 @@ public class Runner {
 		IntStream.range(101, 1000).forEach(i -> solutions.put(i, 0));
 
 //		numbers = new ArrayList<>(Arrays.asList("10", "10", "9", "9", "8", "8"));
-		numbers = new ArrayList<>(Arrays.asList("10", "25", "75", "100", "9", "8"));
-//        numbers = new ArrayList<>(Arrays.asList("1", "1", "2", "2", "3", "3", "4", "4", "5", "5", "6", "6", "7", "7", "8", "8", "9", "9", "10", "10", "25", "50", "75", "100"));
+//		numbers = new ArrayList<>(Arrays.asList("10", "25", "75", "100", "9", "8"));
+        numbers = new ArrayList<>(Arrays.asList("1", "1", "2", "2", "3", "3", "4", "4", "5", "5", "6", "6", "7", "7", "8", "8", "9", "9", "10", "10", "25", "50", "75", "100"));
+		// just the numbers 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10, 25, 50, 75, 100
 
 		R = 6;
 
 		runner.start();
+
+		WriteToFile writer = new WriteToFile();
+		writer.write(solutions);
 	}
 
 	public void encode() {
@@ -132,12 +136,6 @@ public class Runner {
 		System.out.printf("Valid Solutions: %d%n", Evaluate.validSolutions);
 		System.out.printf("Invalid Equations: %d%n", Evaluate.invalidEquations);
 		System.out.printf("Invalid Solutions: %d%n", Evaluate.invalidSolutions);
-
-		for (Map.Entry<Integer, Integer> entry : solutions.entrySet()) {
-			if (entry.getValue() != 0) {
-				System.out.printf("%d: %d%n", entry.getKey(), entry.getValue());
-			}
-		}
 	}
 
 	private String time(long start) {
