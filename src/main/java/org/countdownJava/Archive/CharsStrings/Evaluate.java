@@ -7,51 +7,6 @@ public class Evaluate {
     public static int invalidEquations = 0, validEquations = 0, invalidSolutions = 0, validSolutions = 0;
     public static Map<String, Integer> intermidiarySolutions = new HashMap<>();
 
-    public void evaluate(char[][] postfixArray) {
-        for (char[] postfix : postfixArray) {
-            if (postfix[0] == '\0') break;
-
-            int[] stack = new int[11];
-            int top = -1;
-            int a, b, result = 0;
-            boolean invalid = false;
-
-            for (char token : postfix) {
-                if (token == '\0') break;
-
-                if (Character.isDigit(token)) {
-                    stack[++top] = Character.getNumericValue(token);
-                } else {
-                    if (top < 1) break;
-
-                    a = stack[top--];
-                    b = stack[top--];
-
-                    switch (token) {
-                        case 'o' -> result = b + a;
-                        case 'q' -> result = b * a;
-                        case 'p' -> {
-                            if (a < b) {
-                                result = b - a;
-                            } else invalid = true;
-
-                        }
-                        case 'r' -> {
-                            if (a % b == 0) {
-                                result = a / b;
-                            } else invalid = true;
-                        }
-                        default -> throw new IllegalStateException("Unexpected value: " + token);
-                    }
-
-                    if (invalid) break;
-
-                    stack[++top] = result;
-                }
-            }
-        }
-    }
-
     public void evaluate(String[][] postfixArray) {
         long start = System.currentTimeMillis(); // Time Tracker
         for (String[] postfix : postfixArray) {
