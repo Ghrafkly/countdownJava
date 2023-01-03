@@ -1,4 +1,4 @@
-package org.countdownJava.Archive;
+package org.countdownJava.Archive.Strings;
 
 public class Evaluate {
 	private final String[][] postfixArray;

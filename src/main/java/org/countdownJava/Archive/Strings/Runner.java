@@ -1,4 +1,4 @@
-package org.countdownJava.Archive;
+package org.countdownJava.Archive.Strings;
 
 import java.io.*;
 import java.util.*;

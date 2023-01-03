@@ -5,14 +5,32 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c2c086af-04f1-484a-9142-17ce175e2af7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/countdownJava/Current/WriteToFile.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/countdownJava/Current/solutions.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/countdownJava/Archive/CharsStrings/Combinations.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/countdownJava/Archive/CharsStrings/Evaluate.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/countdownJava/Archive/CharsStrings/Permutations.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/countdownJava/Archive/CharsStrings/Postfix.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/countdownJava/Archive/CharsStrings/Remove.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/countdownJava/Archive/CharsStrings/Runner.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/countdownJava/Archive/CharsStrings/solutions.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/countdownJava/Test/Test.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/countdownJava/Test/TestAgain.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/countdownJava/Archive/Combinations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/countdownJava/Archive/Strings/Combinations.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/countdownJava/Archive/Evaluate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/countdownJava/Archive/Strings/Evaluate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/countdownJava/Archive/Permutations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/countdownJava/Archive/Strings/Permutations.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/countdownJava/Archive/Postfix.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/countdownJava/Archive/Strings/Postfix.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/countdownJava/Archive/Runner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/countdownJava/Archive/Strings/Runner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/countdownJava/Archive/solutions.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/countdownJava/Archive/Strings/solutions.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/countdownJava/Current/Combinations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/countdownJava/Current/Combinations.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/countdownJava/Current/Decoder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/countdownJava/Archive/CharsStrings/Decoder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/countdownJava/Current/Encoder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/countdownJava/Archive/CharsStrings/Encoder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/countdownJava/Current/Evaluate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/countdownJava/Current/Evaluate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/countdownJava/Current/Permutations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/countdownJava/Current/Permutations.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/countdownJava/Current/Postfix.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/countdownJava/Current/Postfix.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/countdownJava/Current/Remove.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/countdownJava/Current/Remove.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/countdownJava/Current/Runner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/countdownJava/Current/Runner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/countdownJava/Test/Remove.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/countdownJava/Test/Timing.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/countdownJava/Current/WriteToFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/countdownJava/Archive/CharsStrings/WriteToFile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/countdownJava/Current/solutions.txt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,44 +62,59 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "extract.method.default.visibility": "private",
-    "last.edited.regexp": "123a1234a2134234sdf123sadf",
-    "last_opened_file_path": "C:/Github/countdownJava",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;extract.method.default.visibility&quot;: &quot;private&quot;,
+    &quot;last.edited.regexp&quot;: &quot;123a1234a2134234sdf123sadf&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Github/countdownJava&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "postgresql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Kyle\OneDrive\Documents\GitHub\countdownJava\src\main\java\org\countdownJava" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\GitHub\countdownJava\src\main\java\org\countdownJava\Archive\CharsStrings" />
+      <recent name="C:\GitHub\countdownJava\src\main\java\org\countdownJava\Archive\Strings" />
       <recent name="C:\GitHub\countdownJava\src\main\java\org\countdownJava\Archive" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.org.countdownJava.Current.Runner">
-    <configuration name="Remove" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.countdownJava.Test.Remove" />
+  <component name="RunManager" selected="Application.Test">
+    <configuration name="Postfix" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.countdownJava.Current.Postfix" />
       <module name="countdownJava" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.countdownJava.Test.*" />
+          <option name="PATTERN" value="org.countdownJava.Current.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Remove" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.countdownJava.Current.Remove" />
+      <module name="countdownJava" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.countdownJava.Current.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -90,11 +123,24 @@
       </method>
     </configuration>
     <configuration name="Runner" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.countdownJava.Runner" />
+      <option name="MAIN_CLASS_NAME" value="org.countdownJava.Current.Runner" />
       <module name="countdownJava" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.countdownJava.*" />
+          <option name="PATTERN" value="org.countdownJava.Current.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.countdownJava.Test.Test" />
+      <module name="countdownJava" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.countdownJava.Test.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -115,39 +161,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="org.countdownJava.Current.Remove" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.countdownJava.Current.Remove" />
-      <module name="countdownJava" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.countdownJava.Current.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="org.countdownJava.Current.Runner" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.countdownJava.Current.Runner" />
-      <module name="countdownJava" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.countdownJava.Current.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Test" />
         <item itemvalue="Application.org.countdownJava.Current.Runner" />
+        <item itemvalue="Application.Postfix" />
         <item itemvalue="Application.org.countdownJava.Current.Remove" />
         <item itemvalue="Application.org.countdownJava.Archive.Runner" />
-        <item itemvalue="Application.Remove" />
-        <item itemvalue="Application.Runner" />
       </list>
     </recent_temporary>
   </component>
@@ -171,7 +191,8 @@
       <workItem from="1672450796135" duration="14809000" />
       <workItem from="1672475544174" duration="3387000" />
       <workItem from="1672529088854" duration="4728000" />
-      <workItem from="1672545483860" duration="2346000" />
+      <workItem from="1672545483860" duration="6088000" />
+      <workItem from="1672729223414" duration="7381000" />
     </task>
     <servers />
   </component>
