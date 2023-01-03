@@ -18,7 +18,10 @@ public class Runner {
 
 	public void combinations() {
 		Combinations combinations = new Combinations();
+		System.out.println(numbers);
 		combinationsSet = combinations.generate(numbers, numbers.size(), R);
+		System.out.println(combinationsSet.size());
+
 		numberOfCombinations = combinationsSet.size();
 	}
 

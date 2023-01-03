@@ -5,7 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c2c086af-04f1-484a-9142-17ce175e2af7" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/countdownJava/Archive/CharsStrings/Evaluate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/countdownJava/Archive/CharsStrings/Evaluate.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/countdownJava/Current/Operations.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/countdownJava/Current/solutions.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/countdownJava/Archive/CharsStrings/Combinations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/countdownJava/Archive/CharsStrings/Combinations.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/countdownJava/Archive/CharsStrings/Postfix.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/countdownJava/Archive/CharsStrings/Postfix.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/countdownJava/Archive/CharsStrings/Runner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/countdownJava/Archive/CharsStrings/Runner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/countdownJava/Current/Combinations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/countdownJava/Current/Combinations.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/countdownJava/Current/Evaluate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/countdownJava/Current/Evaluate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/countdownJava/Current/Permutations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/countdownJava/Current/Permutations.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/countdownJava/Current/Postfix.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/countdownJava/Current/Postfix.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/countdownJava/Current/Runner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/countdownJava/Current/Runner.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,6 +26,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Record" />
       </list>
     </option>
   </component>
@@ -70,26 +81,13 @@
       <recent name="C:\GitHub\countdownJava\src\main\java\org\countdownJava\Archive" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Test">
-    <configuration name="Postfix" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.countdownJava.Current.Postfix" />
+  <component name="RunManager" selected="Application.org.countdownJava.Current.Runner">
+    <configuration name="Combinations" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.countdownJava.Archive.CharsStrings.Combinations" />
       <module name="countdownJava" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.countdownJava.Current.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Remove" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.countdownJava.Current.Remove" />
-      <module name="countdownJava" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.countdownJava.Current.*" />
+          <option name="PATTERN" value="org.countdownJava.Archive.CharsStrings.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -123,12 +121,25 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="org.countdownJava.Archive.Runner" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.countdownJava.Archive.Runner" />
+    <configuration name="org.countdownJava.Archive.CharsStrings.Runner" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.countdownJava.Archive.CharsStrings.Runner" />
       <module name="countdownJava" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.countdownJava.Archive.*" />
+          <option name="PATTERN" value="org.countdownJava.Archive.CharsStrings.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="org.countdownJava.Current.Combinations" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.countdownJava.Current.Combinations" />
+      <module name="countdownJava" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.countdownJava.Current.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -138,11 +149,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Test" />
         <item itemvalue="Application.org.countdownJava.Current.Runner" />
-        <item itemvalue="Application.Postfix" />
-        <item itemvalue="Application.org.countdownJava.Current.Remove" />
-        <item itemvalue="Application.org.countdownJava.Archive.Runner" />
+        <item itemvalue="Application.org.countdownJava.Archive.CharsStrings.Runner" />
+        <item itemvalue="Application.org.countdownJava.Current.Combinations" />
+        <item itemvalue="Application.Combinations" />
+        <item itemvalue="Application.Test" />
       </list>
     </recent_temporary>
   </component>
@@ -167,7 +178,7 @@
       <workItem from="1672475544174" duration="3387000" />
       <workItem from="1672529088854" duration="4728000" />
       <workItem from="1672545483860" duration="6088000" />
-      <workItem from="1672729223414" duration="7795000" />
+      <workItem from="1672729223414" duration="16410000" />
     </task>
     <servers />
   </component>

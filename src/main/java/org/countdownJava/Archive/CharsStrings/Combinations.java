@@ -7,10 +7,12 @@ import java.util.Set;
 
 public class Combinations {
 	public List<List<String>> generate(ArrayList<String> numbers, int N, int R) {
+		System.out.println(numbers);
 		Set<List<String>> combinations = new HashSet<>();
 		ArrayList<String> combination = new ArrayList<>();
 		combinations(numbers, combinations, combination, 0, 0, N, R);
 
+		System.out.println(combinations.size());
 		return new ArrayList<>(combinations);
 	}
 
@@ -25,5 +27,18 @@ public class Combinations {
 			combinations(numbers, combinations, combination, index + 1, i + 1, N, R);
 			combination.remove(index);
 		}
+	}
+
+	public static void main(String[] args) {
+		int[] nums = {1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10, 25, 50, 75, 100};
+		ArrayList<String> numbers = new ArrayList<>();
+
+		for (int num : nums) {
+			numbers.add(String.valueOf(num));
+		}
+
+		Combinations combinations = new Combinations();
+		combinations.generate(numbers, numbers.size(), 6);
+
 	}
 }

@@ -46,9 +46,4 @@ public class Postfix {
 
 		return postfixArray;
 	}
-
-	public static void main(String[] args) {
-		System.out.println(3518912 + 5367796 + 26448928 + 41635710);
-		System.out.println(3488672 + 5312716 + 26448928 + 41595750);
-	}
 }
