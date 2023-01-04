@@ -1,6 +1,5 @@
 package org.countdownJava.Current;
 
-import java.sql.SQLOutput;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -12,11 +11,12 @@ public class Evaluate {
 	public void evaluate(byte[][] postfixArray) {
 		for (byte[] postfix : postfixArray) {
 			boolean valid = true;
-			int[] stack = new int[6];
+			int[] stack = new int[11];
 			int stackIndex = 0;
 
 			for (byte token : postfix) {
 				int result = 0;
+				boolean unique = true;
 
 				if (!(tokenIsOp(token))) {
 					stack[stackIndex++] = token;
@@ -35,6 +35,7 @@ public class Evaluate {
 					// check if a and b are in intermidiarySolutions
 					if (intermidiarySolutions.containsKey(op)) {
 						result = intermidiarySolutions.get(op);
+						unique = false;
 					} else {
 						switch (token) {
 							case -1 -> result = a + b;
@@ -58,14 +59,17 @@ public class Evaluate {
 					stack[stackIndex++] = result;
 					intermidiarySolutions.put(op, result);
 
-					// if result is a three-digit number, add to solutions map
-					if (result >= 101 && result <= 999) {
-						validSolutions++;
-						Runner.solutions.put(result, Runner.solutions.getOrDefault(result, 0L) + 1);
-					} else {
-						invalidSolutions++;
+					// if result is a three-digit number, and is a unique solution, add to map
+					if (unique) {
+						if (result >= 101 && result <= 999) {
+							validSolutions++;
+							Runner.solutions.put(result, Runner.solutions.getOrDefault(result, 0L) + 1);
+						} else {
+							invalidSolutions++;
+						}
 					}
 				}
+
 			}
 
 			// if equation is valid, increment validEquations

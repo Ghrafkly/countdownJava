@@ -5,6 +5,7 @@ import java.util.concurrent.TimeUnit;
 
 public class Runner {
 	public static Map<Integer, Long> solutions = new HashMap<>();
+	public static int invalid = 0;
 
 	private final byte[] operators = {-1, -2, -3, -4};
 //	private final byte[] numbers = {10, 25, 75, 100, 9, 8};
@@ -14,7 +15,8 @@ public class Runner {
 	private final Map<List<Byte>, byte[][]> mapPermutationsPostfix = new HashMap<>();
 
 	private List<List<Byte>> setCombinations, setPermutations;
-	private int numCombinations, numPermutations, numPostfix;
+	private int numCombinations, numPermutations;
+	private long numPostfix;
 
 	private void combinations() {
 		Combinations combinations = new Combinations();
@@ -23,7 +25,7 @@ public class Runner {
 		ArrayList<Byte> nums = new ArrayList<>();
 		for (byte number : numbers) nums.add(number);
 
-		setCombinations = combinations.generate(nums, numbers.length, 6);
+		setCombinations = combinations.generate(nums, numbers.length, 5);
 		numCombinations = setCombinations.size();
 
 	}
@@ -41,7 +43,6 @@ public class Runner {
 
 	private void postfix() {
 		for (Map.Entry<List<Byte>, List<List<Byte>>> entry : mapCombinationsPermutations.entrySet()) {
-			long start = System.currentTimeMillis();
 			for (List<Byte> permutation : entry.getValue()) {
 				// Convert List<Byte> to byte[]
 				byte[] permutationArray = new byte[permutation.size()];
@@ -59,10 +60,8 @@ public class Runner {
 			// Evaluate Postfix, then clear the map to save memory
 			evaluate(mapPermutationsPostfix);
 			mapPermutationsPostfix.clear();
-			Evaluate.intermidiarySolutions.clear();
 
-			long end = System.currentTimeMillis();
-			System.out.printf("Time taken for %s: %d ms%n", entry.getKey(), end - start);
+//			System.out.printf("Combinations left: %d\r", --numCombinations);
 		}
 	}
 
@@ -71,6 +70,7 @@ public class Runner {
 		for (Map.Entry<List<Byte>, byte[][]> entry : map.entrySet()) {
 			evaluate.evaluate(entry.getValue());
 		}
+//		Evaluate.intermidiarySolutions.clear();
 	}
 
 	private void run() {
@@ -89,12 +89,15 @@ public class Runner {
 		System.out.printf("Postfix: %d in %s%n", numPostfix, timer(startTime));
 
 		printCounts();
-		printSolutions();
+//		printSolutions();
 	}
 
 	public static void main(String[] args) {
 		Runner runner = new Runner();
 		runner.run();
+
+		WriteToFile writeToFile = new WriteToFile();
+		writeToFile.write(solutions);
 	}
 
 	private void printCounts() {
@@ -112,10 +115,10 @@ public class Runner {
 		System.out.printf("Total Equations: %d%n", Evaluate.validEquations + Evaluate.invalidEquations);
 		System.out.printf("Total Solutions: %d%n", Evaluate.validSolutions + Evaluate.invalidSolutions);
 
-//		System.out.println("Solutions:");
-//		for (Map.Entry<Integer, Long> entry : solutions.entrySet()) {
-//			System.out.printf("%d: %d%n", entry.getKey(), entry.getValue());
-//		}
+		System.out.println("Solutions:");
+		for (Map.Entry<Integer, Long> entry : solutions.entrySet()) {
+			System.out.printf("%d: %d%n", entry.getKey(), entry.getValue());
+		}
 	}
 
 	private String timer(long start) {

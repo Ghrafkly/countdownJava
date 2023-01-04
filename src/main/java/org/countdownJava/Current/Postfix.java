@@ -6,6 +6,7 @@ public class Postfix {
 	private final byte[] operators, permutations;
 	private final byte[][] postfixArray;
 	private int currentIndex = 0, listIndex = 0, postfixIndex = 0;
+	private Remove remove = new Remove();
 
 	public Postfix(byte[] permutations, byte[] operators) {
 		// 43008 without remove
@@ -21,7 +22,7 @@ public class Postfix {
 			byte[] copy = Arrays.copyOf(current, current.length);
 			postfixArray[postfixIndex++] = copy;
 
-//			if (remove(copy)) {
+//			if (remove.removeCheck(copy)) {
 //				postfixArray[postfixIndex++] = copy;
 //			} else {
 //				Runner.invalid++;
