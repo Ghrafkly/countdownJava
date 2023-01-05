@@ -54,7 +54,7 @@ public class Postfix {
 				listIndex--;
 			}
 		} catch (Exception e) {
-			System.out.println(Arrays.toString(permutation));
+			System.out.printf("Exception for %s%n", Arrays.toString(permutation));
 		}
 
 		return postfixArray;
