@@ -6,20 +6,19 @@ import java.util.concurrent.*;
 public class Postfix {
 	private final int[] operators = {-1, -2, -3, -4};
 	private int currentIndex = 0, listIndex = 0, postfixIndex = 0;
-	private final Map<List<Integer>, int[][]> mapPermutationsPostfix = new HashMap<>();
+	private final Map<int[], int[][]> mapPermutationsPostfix = new HashMap<>();
 
-	public void postfix(Map<List<Integer>, List<List<Integer>>> mapCombinationsPermutations) throws ExecutionException, InterruptedException {
+	public void postfix(Map<int[], int[][]> mapCombinationsPermutations) throws ExecutionException, InterruptedException {
 		ExecutorService executor = Executors.newFixedThreadPool(12);
-		Map<List<Integer>, Future<int[][]>> futures = new HashMap<>();
+		Map<int[], Future<int[][]>> futures = new HashMap<>();
 
-		for (Map.Entry<List<Integer>, List<List<Integer>>> entry : mapCombinationsPermutations.entrySet()) {
-			for (List<Integer> permutation : entry.getValue()) {
-				int[] permutationArray = permutation.stream().mapToInt(i -> i).toArray();
-				futures.put(permutation, executor.submit(() -> generatePostfix(permutationArray, new int[43008][5], new int[5], -1)));
+		for (Map.Entry<int[], int[][]> entry : mapCombinationsPermutations.entrySet()) {
+			for (int[] permutation : entry.getValue()) {
+				futures.put(permutation, executor.submit(() -> generatePostfix(permutation, new int[43008][5], new int[5], -1)));
 			}
 		}
 
-		for (List<Integer> permutation : futures.keySet()) {
+		for (int[] permutation : futures.keySet()) {
 			List<int[]> hold = new ArrayList<>();
 			// culls out the null arrays
 			for (int[] postfix : futures.get(permutation).get()) {
@@ -62,7 +61,7 @@ public class Postfix {
 
 	}
 
-	public Map<List<Integer>, int[][]> getMapPermutationsPostfix() {
+	public Map<int[], int[][]> getMapPermutationsPostfix() {
 		return mapPermutationsPostfix;
 	}
 

@@ -5,14 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c2c086af-04f1-484a-9142-17ce175e2af7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/countdownJava/Current/Postfix.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/countdownJava/Current/WriteToFile.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/countdownJava/Current/postfix.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/countdownJava/Current/MyExecutor.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/countdownJava/Current/Permutations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/countdownJava/Current/Permutations.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/countdownJava/Current/Postfix.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/countdownJava/Current/Postfix.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/countdownJava/Current/Runner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/countdownJava/Current/Runner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/countdownJava/solutions.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/countdownJava/solutions.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -185,7 +180,7 @@
       <workItem from="1672791628366" duration="1100000" />
       <workItem from="1672824404733" duration="6467000" />
       <workItem from="1672876357620" duration="22138000" />
-      <workItem from="1672911653885" duration="9125000" />
+      <workItem from="1672911653885" duration="9433000" />
     </task>
     <servers />
   </component>

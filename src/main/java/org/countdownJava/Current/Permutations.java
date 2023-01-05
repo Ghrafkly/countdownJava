@@ -4,9 +4,8 @@ import java.util.*;
 import java.util.concurrent.*;
 
 public class Permutations {
-	private final Map<List<Integer>, List<List<Integer>>> mapCombinationsPermutations = new HashMap<>();
-	private final Map<int[], int[][]> temps = new HashMap<>();
-
+	private final Map<List<Integer>, List<List<Integer>>> temp = new HashMap<>();
+	private final Map<int[], int[][]> mapCombinationsPermutations = new HashMap<>();
 
 	public void permutations(List<List<Integer>> combinations) throws ExecutionException, InterruptedException {
 		ExecutorService executor = Executors.newFixedThreadPool(12);
@@ -17,7 +16,7 @@ public class Permutations {
 		}
 
 		for (List<Integer> combination : futures.keySet()) {
-			mapCombinationsPermutations.put(combination, futures.get(combination).get());
+			temp.put(combination, futures.get(combination).get());
 		}
 
 		executor.shutdownNow();
@@ -49,25 +48,22 @@ public class Permutations {
 
 	private void convertToArray() {
 		int[][] tempArray;
-		for (Map.Entry<List<Integer>, List<List<Integer>>> entry : mapCombinationsPermutations.entrySet()) {
+		for (Map.Entry<List<Integer>, List<List<Integer>>> entry : temp.entrySet()) {
 			tempArray = new int[entry.getValue().size()][entry.getKey().size()];
 			for (int i = 0; i < entry.getValue().size(); i++) {
 				for (int j = 0; j < entry.getKey().size(); j++) {
 					tempArray[i][j] = entry.getValue().get(i).get(j);
 				}
 			}
-			temp.put(entry.getKey().stream().mapToInt(i -> i).toArray(), tempArray);
+			mapCombinationsPermutations.put(entry.getKey().stream().mapToInt(i -> i).toArray(), tempArray);
 		}
 
-		for (Map.Entry<int[], int[][]> entry : temp.entrySet()) {
+		for (Map.Entry<int[], int[][]> entry : mapCombinationsPermutations.entrySet()) {
 			System.out.println(Arrays.toString(entry.getKey()) + " -> " + Arrays.deepToString(entry.getValue()));
 		}
-
-
-
 	}
 
-	public Map<List<Integer>, List<List<Integer>>> getMapCombinationsPermutations() {
+	public Map<int[], int[][]> getMapCombinationsPermutations() {
 		return mapCombinationsPermutations;
 	}
 }

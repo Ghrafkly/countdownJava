@@ -8,12 +8,12 @@ public class Runner {
 	public static int invalid = 0;
 
 	private final Integer[] operators = {-1, -2, -3, -4};
-//		private final Integer[] numbers = {10, 25, 75};
-		private final Integer[] numbers = {1, 2, 3};
+//		private final Integer[] numbers = {10, 25, 75, 100, 9, 8};
+		private final Integer[] numbers = {1, 2, 3, 3};
 //	private final Integer[] numbers = {1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10, 25, 50, 75, 100};
 
-	private Map<List<Integer>, List<List<Integer>>> mapCombinationsPermutations = new HashMap<>();
-	private Map<List<Integer>, int[][]> mapPermutationsPostfix = new HashMap<>();
+	private Map<int[], int[][]> mapCombinationsPermutations = new HashMap<>();
+	private Map<int[], int[][]> mapPermutationsPostfix = new HashMap<>();
 
 	private List<List<Integer>> setCombinations, setPermutations;
 	private int numCombinations, numPermutations;
@@ -60,11 +60,11 @@ public class Runner {
 	private void count() {
 		numCombinations = setCombinations.size();
 
-		for (List<Integer> combination : mapCombinationsPermutations.keySet()) {
-			numPermutations += mapCombinationsPermutations.get(combination).size();
+		for (int[] combination : mapCombinationsPermutations.keySet()) {
+			numPermutations += mapCombinationsPermutations.get(combination).length;
 		}
 
-		for (List<Integer> permutation : mapPermutationsPostfix.keySet()) {
+		for (int[] permutation : mapPermutationsPostfix.keySet()) {
 			numPostfix += mapPermutationsPostfix.get(permutation).length;
 		}
 	}
