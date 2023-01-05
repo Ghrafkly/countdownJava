@@ -1,4 +1,4 @@
-package org.countdownJava.Current;
+package org.countdownJava.Archive.Bytes;
 
 public class Remove {
 	public boolean removeCheck(byte[] postfix) {

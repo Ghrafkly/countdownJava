@@ -1,4 +1,4 @@
-package org.countdownJava.Current;
+package org.countdownJava.Archive.Bytes;
 
 public record Operations(int a, int b, byte op) {
 	@Override
