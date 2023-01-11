@@ -5,50 +5,40 @@ import java.util.concurrent.*;
 import java.util.stream.IntStream;
 
 public class Postfix {
-	private Map<Integer, Long> solutionsMap = new HashMap<>();
+	private final Map<Integer, Long> solutionsMap = new HashMap<>();
 
 	public void execute(Map<List<Integer>, List<List<Integer>>> mapCombinationsPermutations) throws ExecutionException, InterruptedException {
-		ExecutorService executor = Executors.newFixedThreadPool(12);
-
-		Map<List<Integer>, Future<int[]>> futures = new HashMap<>();
+		ExecutorService executorPostfix = Executors.newFixedThreadPool(6);
+		ExecutorService executorEvaluate = Executors.newFixedThreadPool(6);
+		Map<List<Integer>, Future<int[][]>> futures = new HashMap<>();
+		List<Future<int[]>> solutions = new ArrayList<>();
 
 		for (Map.Entry<List<Integer>, List<List<Integer>>> combination : mapCombinationsPermutations.entrySet()) {
-			futures.put(combination.getKey(), executor.submit(() -> evaluatePostfix(combination)));
-		}
+			for (List<Integer> permutation : combination.getValue()) {
+				PostfixGen postfixGen = new PostfixGen(permutation);
+				futures.put(permutation, executorPostfix.submit(() -> postfixGen.generatePostfix()));
+			}
 
-		executor.shutdownNow();
+			Map<Operations, Integer> intermidiarySolutions = new HashMap<>();
+			for (List<Integer> permutation : combination.getValue()) {
+				solutions.add(executorEvaluate.submit(() -> evaluatePostfix(futures.get(permutation).get(), intermidiarySolutions)));
+			}
 
-		// add solutions to map
-		for (Map.Entry<List<Integer>, Future<int[]>> future : futures.entrySet()) {
-			int[] solutions = future.getValue().get();
-			for (int solution : solutions) {
-				if (solutionsMap.containsKey(solution)) {
-					solutionsMap.put(solution, solutionsMap.get(solution) + 1);
-				} else {
-					solutionsMap.put(solution, 1L);
+			// add solutions to solutionsMap
+			for (Future<int[]> solution : solutions) {
+				for (int result : solution.get()) {
+					solutionsMap.put(result, solutionsMap.getOrDefault(result, 0L) + 1);
 				}
 			}
+
+			// clear futures and solutions to save memory
+			futures.clear();
+			solutions.clear();
 		}
 
-	}
-
-	public int[] evaluatePostfix(Map.Entry<List<Integer>, List<List<Integer>>> combination) {
-		Map<Operations, Integer> intermediarySolutions = new HashMap<>();
-		Map<List<Integer>, int[][]> mapPermutationsPostfix = new HashMap<>();
-		int[] solutions = new int[0];
-
-		for (List<Integer> permutation : combination.getValue()) {
-			PostfixGen postfixGen = new PostfixGen(permutation);
-			mapPermutationsPostfix.put(permutation, postfixGen.generatePostfix());
-		}
-
-		for (int[][] postfix : mapPermutationsPostfix.values()) {
-			solutions = IntStream.concat(Arrays.stream(solutions), Arrays.stream(evaluatePostfix(postfix, intermediarySolutions))).toArray();
-		}
-
-		mapPermutationsPostfix.clear();
-
-		return solutions;
+		// shutdown executors
+		executorPostfix.shutdown();
+		executorEvaluate.shutdown();
 	}
 
 	public int[] evaluatePostfix(int[][] postfixArray, Map<Operations, Integer> intermidiarySolutions) {
@@ -113,8 +103,18 @@ public class Postfix {
 		}
 
 		// removes nulls from solutions
-		return Arrays.stream(solutions).filter(i -> i != 0).toArray();
+		int[] nullFreeSolutions = Arrays.stream(solutions).filter(i -> i != 0).toArray();
+
+		if (nullFreeSolutions.length == 0) {
+			// add -1 to indicate no solutions
+			nullFreeSolutions = new int[]{-1};
+		}
+
+//		System.out.println(Arrays.toString(nullFreeSolutions));
+
+		return nullFreeSolutions;
 	}
+
 
 	public boolean tokenIsOp(int token) {
 		return token < 0;
