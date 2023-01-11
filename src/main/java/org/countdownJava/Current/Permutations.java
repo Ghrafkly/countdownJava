@@ -5,10 +5,8 @@ import java.util.concurrent.*;
 
 public class Permutations {
 	private final Map<List<Integer>, List<List<Integer>>> mapCombinationsPermutations = new HashMap<>();
-	private final Map<int[], int[][]> temps = new HashMap<>();
 
-
-	public void permutations(List<List<Integer>> combinations) throws ExecutionException, InterruptedException {
+	public void execute(List<List<Integer>> combinations) throws ExecutionException, InterruptedException {
 		ExecutorService executor = Executors.newFixedThreadPool(12);
 		Map<List<Integer>, Future<List<List<Integer>>>> futures = new HashMap<>();
 
@@ -21,8 +19,6 @@ public class Permutations {
 		}
 
 		executor.shutdownNow();
-
-		convertToArray();
 	}
 
 	public List<List<Integer>> computePermutations(List<Integer> combination) {
@@ -45,26 +41,6 @@ public class Permutations {
 		}
 
 		return new ArrayList<>(returnSet);
-	}
-
-	private void convertToArray() {
-		int[][] tempArray;
-		for (Map.Entry<List<Integer>, List<List<Integer>>> entry : mapCombinationsPermutations.entrySet()) {
-			tempArray = new int[entry.getValue().size()][entry.getKey().size()];
-			for (int i = 0; i < entry.getValue().size(); i++) {
-				for (int j = 0; j < entry.getKey().size(); j++) {
-					tempArray[i][j] = entry.getValue().get(i).get(j);
-				}
-			}
-			temp.put(entry.getKey().stream().mapToInt(i -> i).toArray(), tempArray);
-		}
-
-		for (Map.Entry<int[], int[][]> entry : temp.entrySet()) {
-			System.out.println(Arrays.toString(entry.getKey()) + " -> " + Arrays.deepToString(entry.getValue()));
-		}
-
-
-
 	}
 
 	public Map<List<Integer>, List<List<Integer>>> getMapCombinationsPermutations() {

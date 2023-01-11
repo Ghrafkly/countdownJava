@@ -2,72 +2,126 @@ package org.countdownJava.Current;
 
 import java.util.*;
 import java.util.concurrent.*;
+import java.util.stream.IntStream;
 
 public class Postfix {
-	private final int[] operators = {-1, -2, -3, -4};
-	private int currentIndex = 0, listIndex = 0, postfixIndex = 0;
-	private final Map<List<Integer>, int[][]> mapPermutationsPostfix = new HashMap<>();
+	private Map<Integer, Long> solutionsMap = new HashMap<>();
 
-	public void postfix(Map<List<Integer>, List<List<Integer>>> mapCombinationsPermutations) throws ExecutionException, InterruptedException {
+	public void execute(Map<List<Integer>, List<List<Integer>>> mapCombinationsPermutations) throws ExecutionException, InterruptedException {
 		ExecutorService executor = Executors.newFixedThreadPool(12);
-		Map<List<Integer>, Future<int[][]>> futures = new HashMap<>();
 
-		for (Map.Entry<List<Integer>, List<List<Integer>>> entry : mapCombinationsPermutations.entrySet()) {
-			for (List<Integer> permutation : entry.getValue()) {
-				int[] permutationArray = permutation.stream().mapToInt(i -> i).toArray();
-				futures.put(permutation, executor.submit(() -> generatePostfix(permutationArray, new int[43008][5], new int[5], -1)));
-			}
-		}
+		Map<List<Integer>, Future<int[]>> futures = new HashMap<>();
 
-		for (List<Integer> permutation : futures.keySet()) {
-			List<int[]> hold = new ArrayList<>();
-			// culls out the null arrays
-			for (int[] postfix : futures.get(permutation).get()) {
-				if (postfix[0] != 0) {
-					hold.add(postfix);
-				}
-			}
-
-			mapPermutationsPostfix.put(permutation, hold.toArray(new int[0][0]));
+		for (Map.Entry<List<Integer>, List<List<Integer>>> combination : mapCombinationsPermutations.entrySet()) {
+			futures.put(combination.getKey(), executor.submit(() -> evaluatePostfix(combination)));
 		}
 
 		executor.shutdownNow();
-	}
 
-	public int[][] generatePostfix(int[] permutation, int[][] postfixArray, int[] current, int opsNeeded) {
-		try {
-			if (opsNeeded == 0 && listIndex == permutation.length) {
-				postfixArray[postfixIndex++] = Arrays.copyOf(current, current.length);
-			}
-
-			if (opsNeeded > 0) {
-				for (int operator : operators) {
-					current[currentIndex++] = operator;
-					generatePostfix(permutation, postfixArray, current, opsNeeded - 1);
-					currentIndex--;
+		// add solutions to map
+		for (Map.Entry<List<Integer>, Future<int[]>> future : futures.entrySet()) {
+			int[] solutions = future.getValue().get();
+			for (int solution : solutions) {
+				if (solutionsMap.containsKey(solution)) {
+					solutionsMap.put(solution, solutionsMap.get(solution) + 1);
+				} else {
+					solutionsMap.put(solution, 1L);
 				}
 			}
-
-			if (listIndex < permutation.length) {
-				current[currentIndex++] = permutation[listIndex++];
-				generatePostfix(permutation, postfixArray, current, opsNeeded + 1);
-				currentIndex--;
-				listIndex--;
-			}
-		} catch (Exception e) {
-			System.out.println(Arrays.toString(permutation));
 		}
 
-		return postfixArray;
-
 	}
 
-	public Map<List<Integer>, int[][]> getMapPermutationsPostfix() {
-		return mapPermutationsPostfix;
+	public int[] evaluatePostfix(Map.Entry<List<Integer>, List<List<Integer>>> combination) {
+		Map<Operations, Integer> intermediarySolutions = new HashMap<>();
+		Map<List<Integer>, int[][]> mapPermutationsPostfix = new HashMap<>();
+		int[] solutions = new int[0];
+
+		for (List<Integer> permutation : combination.getValue()) {
+			PostfixGen postfixGen = new PostfixGen(permutation);
+			mapPermutationsPostfix.put(permutation, postfixGen.generatePostfix());
+		}
+
+		for (int[][] postfix : mapPermutationsPostfix.values()) {
+			solutions = IntStream.concat(Arrays.stream(solutions), Arrays.stream(evaluatePostfix(postfix, intermediarySolutions))).toArray();
+		}
+
+		mapPermutationsPostfix.clear();
+
+		return solutions;
 	}
 
-	public static void main(String[] args) {
-		System.out.println(672-576);
-		System.out.println(576-480);
+	public int[] evaluatePostfix(int[][] postfixArray, Map<Operations, Integer> intermidiarySolutions) {
+		int[] solutions = new int[150000];
+		int solutionsIndex = 0;
+
+		for (int[] postfix : postfixArray) {
+			boolean valid = true;
+			int[] stack = new int[11];
+			int stackIndex = 0;
+
+			for (int token : postfix) {
+				int result = 0;
+				boolean unique = true;
+
+				if (!(tokenIsOp(token))) {
+					stack[stackIndex++] = token;
+				} else {
+					int b = stack[--stackIndex], a = stack[--stackIndex];
+
+					// deal with commutative operators i.e. a + b = b + a
+					if ((token == -1 || token == -3) && a < b) {
+						int temp = a;
+						a = b;
+						b = temp;
+					}
+
+					Operations op = new Operations(a, b, token);
+
+					if (intermidiarySolutions.containsKey(op)) {
+						result = intermidiarySolutions.get(op);
+						unique = false;
+					} else {
+						switch (token) {
+							case -1 -> result = a + b;
+							case -3 -> result = a * b;
+
+							case -2 -> {
+								// If result is negative, equation is not valid
+								if (a > b) result = a - b;
+								else valid = false;
+							}
+							case -4 -> {
+								// If result is not an integer, equation is not valid
+								if (a % b == 0) result = a / b;
+								else valid = false;
+							}
+						}
+						// if result becomes invalid, break loop
+						if (!valid) break;
+					}
+
+					stack[stackIndex++] = result;
+					intermidiarySolutions.put(op, result);
+
+					// Add solutions if between 101 and 999 (inclusive)
+					if (unique && result >= 101 && result <= 999) {
+						solutions[solutionsIndex++] = result;
+					}
+				}
+			}
+		}
+
+		// removes nulls from solutions
+		return Arrays.stream(solutions).filter(i -> i != 0).toArray();
 	}
+
+	public boolean tokenIsOp(int token) {
+		return token < 0;
+	}
+
+	public Map<Integer, Long> getSolutionsMap() {
+		return solutionsMap;
+	}
+
 }
