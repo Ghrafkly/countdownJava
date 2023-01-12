@@ -7,7 +7,6 @@ public class Runner {
 
 //	private final Integer[] numbers = {10, 25, 75, 100, 9, 8};
 	private final Integer[] numbers = {10, 25, 75, 100, 9, 8, 7};
-//	private final Integer[] numbers = {1, 2, 3, 3};
 //	private final Integer[] numbers = {1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10, 25, 50, 75, 100};
 	private int R = 6;
 
@@ -55,11 +54,11 @@ public class Runner {
 		writeToFile.write(solutions);
 
 		// print solutions in order by key, includes nulls
-		for (int i = 0; i < 1000; i++) {
-			if (solutions.containsKey(i)) {
-				System.out.printf("%d: %d%n", i, solutions.get(i));
-			}
-		}
+//		for (int i = 0; i < 1000; i++) {
+//			if (solutions.containsKey(i)) {
+//				System.out.printf("%d: %d%n", i, solutions.get(i));
+//			}
+//		}
 
 
 
