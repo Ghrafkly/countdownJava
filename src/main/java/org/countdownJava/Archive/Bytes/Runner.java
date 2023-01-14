@@ -11,7 +11,7 @@ public class Runner {
 	public static int invalid = 0;
 
 	private final byte[] operators = {-1, -2, -3, -4};
-	private final byte[] numbers = {10, 25, 75, 100, 9, 8};
+	private final byte[] numbers = {10, 25, 75, 100, 9, 8, 7, 6};
 //	private final byte[] numbers = {1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10, 25, 50, 75, 100};
 
 	private final Map<List<Byte>, List<List<Byte>>> mapCombinationsPermutations = new HashMap<>();

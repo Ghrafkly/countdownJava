@@ -6,7 +6,7 @@ import java.util.concurrent.ExecutionException;
 public class Runner {
 
 //	private final Integer[] numbers = {10, 25, 75, 100, 9, 8};
-	private final Integer[] numbers = {10, 25, 75, 100, 9, 8, 7};
+	private final Integer[] numbers = {10, 25, 75, 100, 9, 8, 7, 6};
 //	private final Integer[] numbers = {1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10, 25, 50, 75, 100};
 	private int R = 6;
 
@@ -34,6 +34,8 @@ public class Runner {
 		Postfix executor = new Postfix();
 		executor.execute(mapCombinationsPermutations);
 		solutions = executor.getSolutionsMap();
+
+		numPostfix = executor.getNumPostfix();
 	}
 
 	private void startUp() throws ExecutionException, InterruptedException {
@@ -45,23 +47,14 @@ public class Runner {
 		postfix();
 		endTime = System.currentTimeMillis();
 
-		count();
+		counts();
+//		solutions();
 
 		System.out.printf("Combinations: %d | Permutations: %d | Postfix: %d | Solutions: %d | Time: %d ms%n",
 				numCombinations, numPermutations, numPostfix, numSolutions, endTime - startTime);
 
 		WriteToFile writeToFile = new WriteToFile();
 		writeToFile.write(solutions);
-
-		// print solutions in order by key, includes nulls
-//		for (int i = 0; i < 1000; i++) {
-//			if (solutions.containsKey(i)) {
-//				System.out.printf("%d: %d%n", i, solutions.get(i));
-//			}
-//		}
-
-
-
 	}
 
 	public static void main(String[] args) throws ExecutionException, InterruptedException {
@@ -69,7 +62,7 @@ public class Runner {
 		runner.startUp();
 	}
 
-	private void count() {
+	private void counts() {
 		numCombinations = setCombinations.size();
 
 		for (List<Integer> combination : mapCombinationsPermutations.keySet()) {
@@ -82,6 +75,14 @@ public class Runner {
 
 		for (Map.Entry<Integer, Long> entry : solutions.entrySet()) {
 			numSolutions += entry.getValue();
+		}
+	}
+
+	private void solutions() {
+		for (int i = 0; i < 1000; i++) {
+			if (solutions.containsKey(i)) {
+				System.out.printf("%d: %d%n", i, solutions.get(i));
+			}
 		}
 	}
 }

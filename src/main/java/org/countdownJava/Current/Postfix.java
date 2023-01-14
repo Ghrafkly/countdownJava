@@ -2,16 +2,20 @@ package org.countdownJava.Current;
 
 import java.util.*;
 import java.util.concurrent.*;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.IntStream;
 
 public class Postfix {
 	private final Map<Integer, Long> solutionsMap = new ConcurrentHashMap<>();
-	private final Map<List<Integer>, int[]> mapPermutationsSolutions = new ConcurrentHashMap<>();
+	private AtomicInteger numPostfix = new AtomicInteger();
 
 	public void execute(Map<List<Integer>, List<List<Integer>>> mapCombinationsPermutations) throws ExecutionException, InterruptedException {
-		long startTime, endTime;
+//		versionOne(mapCombinationsPermutations);
+		versionTwo(mapCombinationsPermutations);
+	}
+
+	public void versionOne(Map<List<Integer>, List<List<Integer>>> mapCombinationsPermutations) throws ExecutionException, InterruptedException {
 		for (List<Integer> combination : mapCombinationsPermutations.keySet()) {
-			startTime = System.currentTimeMillis();
 			Map<Operations, Integer> intermidiarySolutions = new ConcurrentHashMap<>();
 			List<CompletableFuture<Void>> futures = new ArrayList<>();
 
@@ -19,14 +23,16 @@ public class Postfix {
 
 				futures.add(CompletableFuture.supplyAsync(() -> {
 					PostfixGen postfixGen = new PostfixGen(permutation);
-					return postfixGen.generatePostfix();
+					int[][] postfix = postfixGen.generatePostfix();
+					numPostfix.addAndGet(postfix.length);
+
+					return postfix;
 				}).thenAcceptAsync((postfix) -> {
 					int[] solutions = evaluatePostfix(postfix, intermidiarySolutions);
 					for (int solution : solutions) {
 						solutionsMap.merge(solution, 1L, Long::sum);
 					}
 				}));
-
 			}
 
 			for (CompletableFuture<Void> future : futures) {
@@ -34,9 +40,31 @@ public class Postfix {
 			}
 
 			intermidiarySolutions.clear();
+		}
+	}
 
-			endTime = System.currentTimeMillis();
-			System.out.printf("Combination: %d ms%n", endTime - startTime);
+	public void versionTwo(Map<List<Integer>, List<List<Integer>>> mapCombinationsPermutations) throws ExecutionException, InterruptedException {
+		List<CompletableFuture<Void>> futures = new ArrayList<>();
+		for (List<Integer> combination : mapCombinationsPermutations.keySet()) {
+
+			futures.add(CompletableFuture.runAsync(() -> {
+				Map<Operations, Integer> intermidiarySolutions = new ConcurrentHashMap<>();
+
+				for (List<Integer> permutation : mapCombinationsPermutations.get(combination)) {
+					PostfixGen postfixGen = new PostfixGen(permutation);
+					int[][] postfix = postfixGen.generatePostfix();
+					numPostfix.addAndGet(postfix.length);
+
+					for (int solution : evaluatePostfix(postfix, intermidiarySolutions)) {
+						solutionsMap.merge(solution, 1L, Long::sum);
+					}
+				}
+//				intermidiarySolutions.clear();
+			}));
+		}
+
+		for (CompletableFuture<Void> future : futures) {
+			future.get();
 		}
 	}
 
@@ -112,6 +140,10 @@ public class Postfix {
 
 	public Map<Integer, Long> getSolutionsMap() {
 		return solutionsMap;
+	}
+
+	public int getNumPostfix() {
+		return numPostfix.get();
 	}
 
 }
