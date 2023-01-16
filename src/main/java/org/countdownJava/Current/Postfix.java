@@ -3,24 +3,24 @@ package org.countdownJava.Current;
 import java.util.*;
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
-import java.util.stream.IntStream;
 
 public class Postfix {
 	private final Map<Integer, Long> solutionsMap = new ConcurrentHashMap<>();
-	private AtomicInteger numPostfix = new AtomicInteger();
+	private final AtomicInteger numPostfix = new AtomicInteger();
 
 	public void execute(Map<List<Integer>, List<List<Integer>>> mapCombinationsPermutations) throws ExecutionException, InterruptedException {
-//		versionOne(mapCombinationsPermutations);
-		versionTwo(mapCombinationsPermutations);
+//		versionOneOne(mapCombinationsPermutations);
+//		versionOneTwo(mapCombinationsPermutations);
+//		versionTwo(mapCombinationsPermutations);
+		versionThree(mapCombinationsPermutations);
 	}
 
-	public void versionOne(Map<List<Integer>, List<List<Integer>>> mapCombinationsPermutations) throws ExecutionException, InterruptedException {
+	public void versionOneOne(Map<List<Integer>, List<List<Integer>>> mapCombinationsPermutations) throws ExecutionException, InterruptedException {
 		for (List<Integer> combination : mapCombinationsPermutations.keySet()) {
 			Map<Operations, Integer> intermidiarySolutions = new ConcurrentHashMap<>();
 			List<CompletableFuture<Void>> futures = new ArrayList<>();
 
 			for (List<Integer> permutation : mapCombinationsPermutations.get(combination)) {
-
 				futures.add(CompletableFuture.supplyAsync(() -> {
 					PostfixGen postfixGen = new PostfixGen(permutation);
 					int[][] postfix = postfixGen.generatePostfix();
@@ -30,6 +30,31 @@ public class Postfix {
 				}).thenAcceptAsync((postfix) -> {
 					int[] solutions = evaluatePostfix(postfix, intermidiarySolutions);
 					for (int solution : solutions) {
+						solutionsMap.merge(solution, 1L, Long::sum);
+					}
+				}));
+			}
+
+			for (CompletableFuture<Void> future : futures) {
+				future.get();
+			}
+
+			intermidiarySolutions.clear();
+		}
+	}
+
+	public void versionOneTwo(Map<List<Integer>, List<List<Integer>>> mapCombinationsPermutations) throws ExecutionException, InterruptedException {
+		for (List<Integer> combination : mapCombinationsPermutations.keySet()) {
+			Map<Operations, Integer> intermidiarySolutions = new ConcurrentHashMap<>();
+			List<CompletableFuture<Void>> futures = new ArrayList<>();
+
+			for (List<Integer> permutation : mapCombinationsPermutations.get(combination)) {
+				futures.add(CompletableFuture.runAsync(() -> {
+					PostfixGen postfixGen = new PostfixGen(permutation);
+					int[][] postfix = postfixGen.generatePostfix();
+					numPostfix.addAndGet(postfix.length);
+
+					for (int solution : evaluatePostfix(postfix, intermidiarySolutions)) {
 						solutionsMap.merge(solution, 1L, Long::sum);
 					}
 				}));
@@ -59,13 +84,43 @@ public class Postfix {
 						solutionsMap.merge(solution, 1L, Long::sum);
 					}
 				}
-//				intermidiarySolutions.clear();
 			}));
 		}
 
 		for (CompletableFuture<Void> future : futures) {
 			future.get();
 		}
+	}
+
+	public void versionThree(Map<List<Integer>, List<List<Integer>>> mapCombinationsPermutations) throws ExecutionException, InterruptedException {
+		ExecutorService executor = Executors.newFixedThreadPool(12);
+		Map<List<Integer>, Future<int[][]>> futures = new HashMap<>();
+		List<Future<int[]>> solutions = new ArrayList<>();
+
+		for (Map.Entry<List<Integer>, List<List<Integer>>> combination : mapCombinationsPermutations.entrySet()) {
+			for (List<Integer> permutation : combination.getValue()) {
+				PostfixGen postfixGen = new PostfixGen(permutation);
+				futures.put(permutation, executor.submit(() -> postfixGen.generatePostfix()));
+			}
+
+			Map<Operations, Integer> intermidiarySolutions = new HashMap<>();
+			for (List<Integer> permutation : combination.getValue()) {
+				solutions.add(executor.submit(() -> evaluatePostfix(futures.get(permutation).get(), intermidiarySolutions)));
+			}
+
+			// add solutions to solutionsMap
+			for (Future<int[]> solution : solutions) {
+				for (int result : solution.get()) {
+					solutionsMap.put(result, solutionsMap.getOrDefault(result, 0L) + 1);
+				}
+			}
+
+			// clear solutions to save memory
+			solutions.clear();
+		}
+
+		// shutdown executors
+		executor.shutdownNow();
 	}
 
 	public int[] evaluatePostfix(int[][] postfixArray, Map<Operations, Integer> intermidiarySolutions) {

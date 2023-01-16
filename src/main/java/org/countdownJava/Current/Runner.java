@@ -6,15 +6,15 @@ import java.util.concurrent.ExecutionException;
 public class Runner {
 
 //	private final Integer[] numbers = {10, 25, 75, 100, 9, 8};
-	private final Integer[] numbers = {10, 25, 75, 100, 9, 8, 7, 6};
+	private final Integer[] numbers = {10, 25, 75, 100, 9, 8, 7};
 //	private final Integer[] numbers = {1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10, 25, 50, 75, 100};
 	private int R = 6;
 
 	private Map<List<Integer>, List<List<Integer>>> mapCombinationsPermutations = new HashMap<>();
-	private Map<List<Integer>, int[][]> mapPermutationsPostfix = new HashMap<>();
+	private final Map<List<Integer>, int[][]> mapPermutationsPostfix = new HashMap<>();
 	private Map<Integer, Long> solutions = new HashMap<>();
 
-	private List<List<Integer>> setCombinations, setPermutations;
+	private List<List<Integer>> setCombinations;
 	private int numCombinations, numPermutations;
 	private long numPostfix, numSolutions;
 
@@ -67,10 +67,6 @@ public class Runner {
 
 		for (List<Integer> combination : mapCombinationsPermutations.keySet()) {
 			numPermutations += mapCombinationsPermutations.get(combination).size();
-		}
-
-		for (List<Integer> permutation : mapPermutationsPostfix.keySet()) {
-			numPostfix += mapPermutationsPostfix.get(permutation).length;
 		}
 
 		for (Map.Entry<Integer, Long> entry : solutions.entrySet()) {
