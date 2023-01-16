@@ -97,27 +97,38 @@ public class Postfix {
 		Map<List<Integer>, Future<int[][]>> futures = new HashMap<>();
 		List<Future<int[]>> solutions = new ArrayList<>();
 
+		int count = 0;
 		for (Map.Entry<List<Integer>, List<List<Integer>>> combination : mapCombinationsPermutations.entrySet()) {
 			for (List<Integer> permutation : combination.getValue()) {
 				PostfixGen postfixGen = new PostfixGen(permutation);
 				futures.put(permutation, executor.submit(() -> postfixGen.generatePostfix()));
 			}
 
-			Map<Operations, Integer> intermidiarySolutions = new HashMap<>();
-			for (List<Integer> permutation : combination.getValue()) {
-				solutions.add(executor.submit(() -> evaluatePostfix(futures.get(permutation).get(), intermidiarySolutions)));
+			Map<Operations, Integer> intermidiarySolutions = new ConcurrentHashMap<>();
+			for (Map.Entry<List<Integer>, Future<int[][]>> future : futures.entrySet()) {
+				solutions.add(executor.submit(() -> evaluatePostfix(future.getValue().get(), intermidiarySolutions)));
 			}
 
 			// add solutions to solutionsMap
 			for (Future<int[]> solution : solutions) {
-				for (int result : solution.get()) {
-					solutionsMap.put(result, solutionsMap.getOrDefault(result, 0L) + 1);
+				try {
+					for (int sol : solution.get()) {
+						solutionsMap.merge(sol, 1L, Long::sum);
+					}
+				} catch (ExecutionException e) {
+					System.out.println(count);
 				}
 			}
 
-			// clear solutions to save memory
+//
+//			// clear solutions to save memory
+			futures.clear();
 			solutions.clear();
+			intermidiarySolutions.clear();
+
+			System.out.printf("Finished %d/%d combinations\r", count++, mapCombinationsPermutations.size());
 		}
+
 
 		// shutdown executors
 		executor.shutdownNow();
