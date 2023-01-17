@@ -11,8 +11,8 @@ public class Postfix {
 	public void execute(Map<List<Integer>, List<List<Integer>>> mapCombinationsPermutations) throws ExecutionException, InterruptedException {
 //		versionOneOne(mapCombinationsPermutations);
 //		versionOneTwo(mapCombinationsPermutations);
-//		versionTwo(mapCombinationsPermutations);
-		versionThree(mapCombinationsPermutations);
+		versionTwo(mapCombinationsPermutations);
+//		versionThree(mapCombinationsPermutations);
 	}
 
 	public void versionOneOne(Map<List<Integer>, List<List<Integer>>> mapCombinationsPermutations) throws ExecutionException, InterruptedException {
@@ -44,9 +44,10 @@ public class Postfix {
 	}
 
 	public void versionOneTwo(Map<List<Integer>, List<List<Integer>>> mapCombinationsPermutations) throws ExecutionException, InterruptedException {
+		List<CompletableFuture<Void>> futures = new ArrayList<>();
+
 		for (List<Integer> combination : mapCombinationsPermutations.keySet()) {
 			Map<Operations, Integer> intermidiarySolutions = new ConcurrentHashMap<>();
-			List<CompletableFuture<Void>> futures = new ArrayList<>();
 
 			for (List<Integer> permutation : mapCombinationsPermutations.get(combination)) {
 				futures.add(CompletableFuture.runAsync(() -> {
@@ -60,18 +61,18 @@ public class Postfix {
 				}));
 			}
 
-			for (CompletableFuture<Void> future : futures) {
-				future.get();
-			}
-
 			intermidiarySolutions.clear();
+		}
+
+		for (CompletableFuture<Void> future : futures) {
+			future.get();
 		}
 	}
 
 	public void versionTwo(Map<List<Integer>, List<List<Integer>>> mapCombinationsPermutations) throws ExecutionException, InterruptedException {
 		List<CompletableFuture<Void>> futures = new ArrayList<>();
-		for (List<Integer> combination : mapCombinationsPermutations.keySet()) {
 
+		for (List<Integer> combination : mapCombinationsPermutations.keySet()) {
 			futures.add(CompletableFuture.runAsync(() -> {
 				Map<Operations, Integer> intermidiarySolutions = new ConcurrentHashMap<>();
 
@@ -185,7 +186,11 @@ public class Postfix {
 					}
 
 					stack[stackIndex++] = result;
-					intermidiarySolutions.put(op, result);
+//					intermidiarySolutions.put(op, result);
+				    intermidiarySolutions.merge(op, result, (x, y) -> {
+				        if (x.equals(y)) return x;
+				        else return -1;
+					});
 
 					// Add solutions if between 101 and 999 (inclusive)
 					if (unique && result >= 101 && result <= 999) {
