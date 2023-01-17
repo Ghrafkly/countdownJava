@@ -15,37 +15,18 @@ public class WriteToFile {
 
 		try {
 			writer = new BufferedWriter(new FileWriter(file));
-			for (Map.Entry<Integer, Long> entry : solutions.entrySet()) {
-				writer.write("%d = %d".formatted(entry.getKey(), entry.getValue()));
-				writer.newLine();
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				assert writer != null;
-				writer.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-	}
-
-	public void writeMap(Map<List<Integer>, int[][]> map) {
-		File file = new File("src/main/java/org/countdownJava/current/postfix.txt");
-		BufferedWriter writer = null;
-
-		try {
-			writer = new BufferedWriter(new FileWriter(file));
-			for (Map.Entry<List<Integer>, int[][]> entry : map.entrySet()) {
-//				System.out.println(entry.getKey() + " ==> " + Arrays.deepToString(entry.getValue()));
-				writer.write("%s".formatted(entry.getKey()));
-				writer.newLine();
-				for (int[] postfix : entry.getValue()) {
-					writer.write("%s".formatted(Arrays.toString(postfix)));
+			// write solutions in order 101 to 999
+			for (int i = 101; i < 1000; i++) {
+				if (solutions.containsKey(i)) {
+					writer.write(i + " " + solutions.get(i));
 					writer.newLine();
 				}
 			}
+
+//			for (Map.Entry<Integer, Long> entry : solutions.entrySet()) {
+//				writer.write("%d = %d".formatted(entry.getKey(), entry.getValue()));
+//				writer.newLine();
+//			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {

@@ -3,10 +3,11 @@ package org.countdownJava.Current;
 import java.util.*;
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicLong;
 
 public class Postfix {
 	private final Map<Integer, Long> solutionsMap = new ConcurrentHashMap<>();
-	private final AtomicInteger numPostfix = new AtomicInteger();
+	private final AtomicLong numPostfix = new AtomicLong();
 
 	public void execute(Map<List<Integer>, List<List<Integer>>> mapCombinationsPermutations) throws ExecutionException, InterruptedException {
 		List<CompletableFuture<Void>> futures = new ArrayList<>();
@@ -81,7 +82,7 @@ public class Postfix {
 					stack[stackIndex++] = result;
 				    intermidiarySolutions.merge(op, result, (x, y) -> {
 				        if (x.equals(y)) return x;
-				        else return -1;
+				        else throw new IllegalStateException("Duplicate key");
 					});
 
 					// Add solutions if between 101 and 999 (inclusive)
@@ -102,7 +103,7 @@ public class Postfix {
 		return solutionsMap;
 	}
 
-	public int getNumPostfix() {
+	public long getNumPostfix() {
 		return numPostfix.get();
 	}
 

@@ -6,7 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="c2c086af-04f1-484a-9142-17ce175e2af7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/countdownJava/Archive/Bytes/WriteToFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/countdownJava/Archive/Bytes/WriteToFile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/countdownJava/Archive/Bytes/solutions.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/countdownJava/Archive/Bytes/solutions.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/countdownJava/Current/Postfix.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/countdownJava/Current/Postfix.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/countdownJava/Current/Runner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/countdownJava/Current/Runner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/countdownJava/Current/WriteToFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/countdownJava/Current/WriteToFile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/countdownJava/Current/solutions.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/countdownJava/Current/solutions.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,32 +83,6 @@
     </key>
   </component>
   <component name="RunManager" selected="Application.Runner">
-    <configuration name="ExecutorV2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.countdownJava.Current.ExecutorV2" />
-      <module name="countdownJava" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.countdownJava.Current.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Postfix" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.countdownJava.Current.Postfix" />
-      <module name="countdownJava" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.countdownJava.Current.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Runner" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.countdownJava.Current.Runner" />
       <module name="countdownJava" />
@@ -147,8 +126,6 @@
       <list>
         <item itemvalue="Application.Runner" />
         <item itemvalue="Application.org.countdownJava.Archive.Bytes.Runner" />
-        <item itemvalue="Application.Postfix" />
-        <item itemvalue="Application.ExecutorV2" />
         <item itemvalue="Application.SimpleExecutor" />
       </list>
     </recent_temporary>
@@ -190,7 +167,7 @@
       <workItem from="1673690342483" duration="5885000" />
       <workItem from="1673739328169" duration="3716000" />
       <workItem from="1673851133478" duration="2781000" />
-      <workItem from="1673913046778" duration="5302000" />
+      <workItem from="1673913046778" duration="6547000" />
     </task>
     <servers />
   </component>

@@ -8,7 +8,7 @@ import java.util.Map;
 
 public class WriteToFile {
 	public void write(Map<Integer, Long> solutions) {
-		File file = new File("src/main/java/org/countdownJava/current/solutions.txt");
+		File file = new File("src/main/java/org/countdownJava/Archive/Bytes/solutions.txt");
 		BufferedWriter writer = null;
 
 		try {
