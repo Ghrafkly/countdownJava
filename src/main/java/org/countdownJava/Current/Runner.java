@@ -6,9 +6,10 @@ import java.util.concurrent.ExecutionException;
 public class Runner {
 
 //	private final Integer[] numbers = {10, 25, 75, 100, 9, 8};
+//	private final Integer[] numbers = {10, 25, 75, 100, 9, 8, 7};
+//	private final Integer[] numbers = {10, 25, 75, 100, 9, 8, 7, 6};
 	private final Integer[] numbers = {10, 25, 75, 100, 9, 8, 7, 6, 5};
 //	private final Integer[] numbers = {1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10, 25, 50, 75, 100};
-	private int R = 6;
 
 	private Map<List<Integer>, List<List<Integer>>> mapCombinationsPermutations = new HashMap<>();
 	private Map<Integer, Long> solutions = new HashMap<>();
@@ -20,7 +21,7 @@ public class Runner {
 	private void combinations() {
 		Combinations combinations = new Combinations();
 		ArrayList<Integer> nums = new ArrayList<>(Arrays.asList(numbers));
-		setCombinations = combinations.generate(nums, numbers.length, R);
+		setCombinations = combinations.generate(nums, numbers.length, 6);
 	}
 
 	private void permutations() throws ExecutionException, InterruptedException {
@@ -43,6 +44,7 @@ public class Runner {
 		startTime = System.currentTimeMillis();
 		combinations();
 		permutations();
+
 		postfix();
 		endTime = System.currentTimeMillis();
 

@@ -5,12 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c2c086af-04f1-484a-9142-17ce175e2af7" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/countdownJava/Test/GPU/ArrayGPU.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/countdownJava/Archive/Bytes/WriteToFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/countdownJava/Archive/Bytes/WriteToFile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/countdownJava/Archive/Bytes/solutions.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/countdownJava/Archive/Bytes/solutions.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/countdownJava/Current/Evaluate.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/countdownJava/Current/Postfix.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/countdownJava/Current/Postfix.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/countdownJava/Current/Runner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/countdownJava/Current/Runner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/countdownJava/Current/WriteToFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/countdownJava/Current/WriteToFile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/countdownJava/Current/hold.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/countdownJava/Current/postfix.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/countdownJava/Current/solutions.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/countdownJava/Current/solutions.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -44,29 +46,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;extract.method.default.visibility&quot;: &quot;private&quot;,
-    &quot;last.edited.regexp&quot;: &quot;123a1234a2134234sdf123sadf&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/GitHub/countdownJava/src/main/java/org/countdownJava/Archive/Bytes&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "extract.method.default.visibility": "private",
+    "last.edited.regexp": "123a1234a2134234sdf123sadf",
+    "last_opened_file_path": "C:/GitHub/countdownJava/src/main/java/org/countdownJava/Archive/Bytes",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.35287356",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;postgresql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\GitHub\countdownJava\src\main\java\org\countdownJava\Archive\Bytes" />
@@ -82,7 +87,20 @@
       <recent name="org.countdownJava.Current" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Runner">
+  <component name="RunManager" selected="Application.ArrayGPU">
+    <configuration name="ArrayGPU" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.countdownJava.Test.GPU.ArrayGPU" />
+      <module name="countdownJava" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.countdownJava.Test.GPU.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Runner" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.countdownJava.Current.Runner" />
       <module name="countdownJava" />
@@ -124,6 +142,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.ArrayGPU" />
         <item itemvalue="Application.Runner" />
         <item itemvalue="Application.org.countdownJava.Archive.Bytes.Runner" />
         <item itemvalue="Application.SimpleExecutor" />
@@ -168,6 +187,8 @@
       <workItem from="1673739328169" duration="3716000" />
       <workItem from="1673851133478" duration="2781000" />
       <workItem from="1673913046778" duration="6547000" />
+      <workItem from="1673939180054" duration="695000" />
+      <workItem from="1674165505355" duration="12684000" />
     </task>
     <servers />
   </component>

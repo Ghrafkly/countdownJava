@@ -8,6 +8,7 @@ import java.util.concurrent.atomic.AtomicLong;
 public class Postfix {
 	private final Map<Integer, Long> solutionsMap = new ConcurrentHashMap<>();
 	private final AtomicLong numPostfix = new AtomicLong();
+	private final AtomicInteger comb = new AtomicInteger();
 
 	public void execute(Map<List<Integer>, List<List<Integer>>> mapCombinationsPermutations) throws ExecutionException, InterruptedException {
 		List<CompletableFuture<Void>> futures = new ArrayList<>();
@@ -21,9 +22,24 @@ public class Postfix {
 					int[][] postfix = postfixGen.generatePostfix();
 					numPostfix.addAndGet(postfix.length);
 
-					evaluatePostfix(postfix, intermidiarySolutions).forEach(solution -> solutionsMap.merge(solution, 1L, Long::sum));
+					for (Integer solution : evaluatePostfix(postfix, intermidiarySolutions)) {
+						solutionsMap.merge(solution, 1L, Long::sum);
+					}
 				}
+				comb.incrementAndGet();
 			}));
+		}
+
+		int hold = 0;
+		while (comb.get() < mapCombinationsPermutations.size()) {
+			if (hold != comb.get()) {
+				if (hold == mapCombinationsPermutations.size()) {
+					System.out.printf("Combination: %d / %d%n", comb.get(), mapCombinationsPermutations.size());
+				} else {
+					System.out.printf("Combination: %d / %d\r", comb.get(), mapCombinationsPermutations.size());
+				}
+				hold = comb.get();
+			}
 		}
 
 		for (CompletableFuture<Void> future : futures) {
@@ -59,31 +75,57 @@ public class Postfix {
 
 					if (intermidiarySolutions.containsKey(op)) {
 						result = intermidiarySolutions.get(op);
+
+						// Intermediary solutions that would result in an invalid solution
+						if (result == -1) break;
+
+						stack[stackIndex++] = result;
 						unique = false;
 					} else {
+						// -1 = +, -2 = -, -3 = *, -4 = /
 						switch (token) {
 							case -1 -> result = a + b;
-							case -3 -> result = a * b;
+
 							// If result is negative, equation is not valid
 							case -2 -> {
-								if (a > b) result = a - b;
+								if (a > b) {
+									result = a - b;
+									// a - b = b
+									if (result == b) unique = false;
+								}
 								else valid = false;
 							}
+
+							case -3 -> {
+								// deal with multiplication by 1
+								if (a == 1 || b == 1) unique = false;
+								result = a * b;
+							}
+
 							// If result is not an integer, equation is not valid
 							case -4 -> {
-								if (a % b == 0) result = a / b;
+								if (a % b == 0) {
+									// deal with division by 1
+									if (b == 1) unique = false;
+									result = a / b;
+									// a / b = b
+									if (result == b) unique = false;
+								}
 								else valid = false;
 							}
 						}
-						// if result becomes invalid, break loop
-						if (!valid) break;
-					}
 
-					stack[stackIndex++] = result;
-				    intermidiarySolutions.merge(op, result, (x, y) -> {
-				        if (x.equals(y)) return x;
-				        else throw new IllegalStateException("Duplicate key");
-					});
+						// add -1 to map to indicate that this a b token is invalid
+						// if result becomes invalid, break loop
+						if (valid) {
+							intermidiarySolutions.merge(op, result, (oldValue, newValue) -> newValue);
+						} else {
+							intermidiarySolutions.merge(op, -1, (oldValue, newValue) -> -1);
+							break;
+						}
+
+						stack[stackIndex++] = result;
+					}
 
 					// Add solutions if between 101 and 999 (inclusive)
 					if (unique && result >= 101 && result <= 999) solutionsList.add(result);
@@ -93,7 +135,6 @@ public class Postfix {
 
 		return solutionsList;
 	}
-
 
 	public boolean tokenIsOp(int token) {
 		return token < 0;
@@ -106,5 +147,4 @@ public class Postfix {
 	public long getNumPostfix() {
 		return numPostfix.get();
 	}
-
 }
