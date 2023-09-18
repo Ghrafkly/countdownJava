@@ -2,14 +2,13 @@ package org.countdownJava.Current;
 
 import java.util.*;
 import java.util.concurrent.ExecutionException;
-import java.util.concurrent.TimeUnit;
 
 public class Runner {
 
 //	private final Integer[] numbers = {10, 25, 75, 100, 9, 8};
 //	private final Integer[] numbers = {10, 25, 75, 100, 9, 8, 7};
 //	private final Integer[] numbers = {10, 25, 75, 100, 9, 8, 7, 6};
-	private final Integer[] numbers = {1, 2, 10, 10, 25, 50, 75, 100};
+	private final Integer[] numbers = {10, 25, 75, 100, 9, 8, 7, 6, 5};
 //	private final Integer[] numbers = {1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10, 25, 50, 75, 100};
 
 	private Map<List<Integer>, List<List<Integer>>> mapCombinationsPermutations = new HashMap<>();
@@ -40,18 +39,14 @@ public class Runner {
 	}
 
 	private void startUp() throws ExecutionException, InterruptedException {
-		long startTime, combTime, permTime, postfixTime;
+		long startTime, endTime;
 
-		startTime = System.nanoTime();
-
+		startTime = System.currentTimeMillis();
 		combinations();
-		combTime = System.nanoTime() - startTime;
-
 		permutations();
-		permTime = System.nanoTime() - combTime - startTime;
-//
+
 		postfix();
-		postfixTime = System.nanoTime() - permTime - combTime - startTime;
+		endTime = System.currentTimeMillis();
 
 		counts();
 //		solutions();
