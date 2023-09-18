@@ -4,15 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c2c086af-04f1-484a-9142-17ce175e2af7" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/d8cdfbdd-87b0-49f0-b614-e705003ef20b.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/d8cdfbdd-87b0-49f0-b614-e705003ef20b.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/countdownJava/Current/Postfix.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/countdownJava/Current/Postfix.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/countdownJava/Current/Runner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/countdownJava/Current/Runner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/countdownJava/Current/solutions.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/countdownJava/Current/solutions.txt" afterDir="false" />
-    </list>
+    <list default="true" id="c2c086af-04f1-484a-9142-17ce175e2af7" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -28,6 +20,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="HARD" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
