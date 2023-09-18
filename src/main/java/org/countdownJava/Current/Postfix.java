@@ -22,9 +22,9 @@ public class Postfix {
 					int[][] postfix = postfixGen.generatePostfix();
 					numPostfix.addAndGet(postfix.length);
 
-					for (Integer solution : evaluatePostfix(postfix, intermidiarySolutions)) {
-						solutionsMap.merge(solution, 1L, Long::sum);
-					}
+//					for (Integer solution : evaluatePostfix(postfix, intermidiarySolutions)) {
+//						solutionsMap.merge(solution, 1L, Long::sum);
+//					}
 				}
 				comb.incrementAndGet();
 			}));
