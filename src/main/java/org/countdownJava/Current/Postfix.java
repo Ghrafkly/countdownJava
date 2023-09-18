@@ -30,6 +30,16 @@ public class Postfix {
 			}));
 		}
 
+		// Single Threaded
+//		for (List<Integer> combination : mapCombinationsPermutations.keySet()) {
+//			for (List<Integer> permutation : mapCombinationsPermutations.get(combination)) {
+//				PostfixGen postfixGen = new PostfixGen(permutation);
+//				int[][] postfix = postfixGen.generatePostfix();
+//				numPostfix.addAndGet(postfix.length);
+//			}
+//			comb.incrementAndGet();
+//		}
+
 		int hold = 0;
 		while (comb.get() < mapCombinationsPermutations.size()) {
 			if (hold != comb.get()) {
