@@ -51,8 +51,50 @@ public class Runner {
 		counts();
 //		solutions();
 
-		System.out.printf("Combinations: %d | Permutations: %d | Postfix: %d | Solutions: %d | Time: %d ms%n",
-				numCombinations, numPermutations, numPostfix, numSolutions, endTime - startTime);
+		if (combTime > 1000000000) {
+			System.out.println("Converted combTime to seconds");
+			combTime = TimeUnit.SECONDS.convert(combTime, TimeUnit.NANOSECONDS);
+		} else if (combTime > 1000000) {
+			System.out.println("Converted combTime to milliseconds");
+			combTime = TimeUnit.MILLISECONDS.convert(combTime, TimeUnit.NANOSECONDS);
+		} else if (combTime > 1000) {
+			System.out.println("Converted combTime to microseconds");
+			combTime = TimeUnit.MICROSECONDS.convert(combTime, TimeUnit.NANOSECONDS);
+		}
+
+		if (permTime > 1000000000) {
+			System.out.println("Converted permTime to seconds");
+			permTime = TimeUnit.SECONDS.convert(permTime, TimeUnit.NANOSECONDS);
+		} else if (permTime > 1000000) {
+			System.out.println("Converted permTime to milliseconds");
+			permTime = TimeUnit.MILLISECONDS.convert(permTime, TimeUnit.NANOSECONDS);
+		} else if (permTime > 1000) {
+			System.out.println("Converted permTime to microseconds");
+			permTime = TimeUnit.MICROSECONDS.convert(permTime, TimeUnit.NANOSECONDS);
+		}
+
+		if (postfixTime > 1000000000) {
+			System.out.println("Converted postfixTime to seconds");
+			postfixTime = TimeUnit.SECONDS.convert(postfixTime, TimeUnit.NANOSECONDS);
+		} else if (postfixTime > 1000000) {
+			System.out.println("Converted postfixTime to milliseconds");
+			postfixTime = TimeUnit.MILLISECONDS.convert(postfixTime, TimeUnit.NANOSECONDS);
+		} else if (postfixTime > 1000) {
+			System.out.println("Converted postfixTime to microseconds");
+			postfixTime = TimeUnit.MICROSECONDS.convert(postfixTime, TimeUnit.NANOSECONDS);
+		}
+
+		System.out.printf("""
+				Combinations: %d | Time: %d
+				Permutations: %d | Time: %d
+				Postfix: %d | Time: %d
+				Solutions: %d
+				""",
+				numCombinations, combTime,
+				numPermutations, permTime,
+				numPostfix, postfixTime,
+				numSolutions
+				);
 
 		WriteToFile writeToFile = new WriteToFile();
 		writeToFile.write(solutions);
