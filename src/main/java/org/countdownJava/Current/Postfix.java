@@ -22,6 +22,7 @@ public class Postfix {
 					int[][] postfix = postfixGen.generatePostfix();
 					numPostfix.addAndGet(postfix.length);
 
+//					This code is so, so slow. Need to evaluate better somehow
 //					for (Integer solution : evaluatePostfix(postfix, intermidiarySolutions)) {
 //						solutionsMap.merge(solution, 1L, Long::sum);
 //					}
