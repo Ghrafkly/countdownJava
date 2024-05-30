@@ -4,12 +4,13 @@ Code Structure
 - Using numbers: 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10, 25, 50, 75, 100
 - Using operators: +, -, , /
 
-All examples of data are a reduced form of what I actually will be working with.
 This is the usual form of the data: [[100, 4, -, 3, 4, 1, /, *, *, 9, /], [100, 4, -, 3, 4, 1, /, *, /, 9, +]...]
 
-1. I generate all 24c6 combinations (removing duplicates). This generates 13,243 combinations.
-2. I then generate all permutations for each combination (also removing duplicates): This generates 5,281,560 permutations
+1. I generate all 24c6 combinations (removing duplicates). This generates 13,243 combinations of unique number sets.
+2. I then generate all permutations for each combination (also removing duplicates): This generates 5,281,560 permutations.
 3. I store the results in a Map (key = combination i.e. [1, 2, 3], value = permutations i.e. [[1, 2, 3], [3, 2, 1], [2, 1, 3]...])
+
+I keep track of each combination and its permuations to eliminate duplicate equations from the same numberset contributing to the finay tally
 
 Up until here the code runs in milliseconds
 
